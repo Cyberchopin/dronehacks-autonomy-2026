@@ -30,6 +30,7 @@ Migration date: 2026-11-01
 | cuVSLAM binary payloads | No target ARM64/JetPack compatibility proof; integrate only from official packages |
 | C++/CUDA side experiments | No demonstrated DroneHacks target benefit yet |
 | Presentation assets | Engineering first; regenerate from current evidence later |
+| Legacy timeout/handoff notes | They describe the old monorepo/worktrees, not the slim competition repository |
 
 ## Compatibility rule
 
