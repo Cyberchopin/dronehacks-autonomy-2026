@@ -14,9 +14,7 @@ from aegisland.sensor_health import (
 
 
 def test_failure_is_immediate() -> None:
-    supervisor = Px4ShadowSupervisor(
-        recovery_samples=3
-    )
+    supervisor = Px4ShadowSupervisor(recovery_samples=3)
 
     # Establish healthy state.
     for _ in range(3):
@@ -25,10 +23,7 @@ def test_failure_is_immediate() -> None:
             global_position_valid=True,
         )
 
-    assert (
-        decision.authority
-        == ShadowAuthority.GRANTED
-    )
+    assert decision.authority == ShadowAuthority.GRANTED
 
     # One invalid observation must revoke immediately.
     decision = supervisor.step(
@@ -36,21 +31,13 @@ def test_failure_is_immediate() -> None:
         global_position_valid=False,
     )
 
-    assert (
-        decision.global_position_state
-        == SensorHealthState.FAILED
-    )
-    assert (
-        decision.authority
-        == ShadowAuthority.REVOKED
-    )
+    assert decision.global_position_state == SensorHealthState.FAILED
+    assert decision.authority == ShadowAuthority.REVOKED
     assert decision.action == Action.HOLD_AND_SCAN
 
 
 def test_recovery_requires_three_samples() -> None:
-    supervisor = Px4ShadowSupervisor(
-        recovery_samples=3
-    )
+    supervisor = Px4ShadowSupervisor(recovery_samples=3)
 
     # Put estimator into failed state.
     supervisor.step(
@@ -73,41 +60,21 @@ def test_recovery_requires_three_samples() -> None:
         global_position_valid=True,
     )
 
-    assert (
-        first.global_position_state
-        == SensorHealthState.DEGRADED
-    )
+    assert first.global_position_state == SensorHealthState.DEGRADED
     assert first.recovery_streak == 1
-    assert (
-        first.authority
-        == ShadowAuthority.REVOKED
-    )
+    assert first.authority == ShadowAuthority.REVOKED
 
-    assert (
-        second.global_position_state
-        == SensorHealthState.DEGRADED
-    )
+    assert second.global_position_state == SensorHealthState.DEGRADED
     assert second.recovery_streak == 2
-    assert (
-        second.authority
-        == ShadowAuthority.REVOKED
-    )
+    assert second.authority == ShadowAuthority.REVOKED
 
-    assert (
-        third.global_position_state
-        == SensorHealthState.HEALTHY
-    )
-    assert (
-        third.authority
-        == ShadowAuthority.GRANTED
-    )
+    assert third.global_position_state == SensorHealthState.HEALTHY
+    assert third.authority == ShadowAuthority.GRANTED
     assert third.action == Action.CONTINUE_MISSION
 
 
 def test_stale_telemetry_revokes_authority() -> None:
-    supervisor = Px4ShadowSupervisor(
-        recovery_samples=3
-    )
+    supervisor = Px4ShadowSupervisor(recovery_samples=3)
 
     for _ in range(3):
         supervisor.step(
@@ -120,8 +87,5 @@ def test_stale_telemetry_revokes_authority() -> None:
         global_position_valid=True,
     )
 
-    assert (
-        decision.authority
-        == ShadowAuthority.REVOKED
-    )
+    assert decision.authority == ShadowAuthority.REVOKED
     assert decision.action == Action.HOLD_AND_SCAN

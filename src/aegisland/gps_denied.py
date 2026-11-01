@@ -51,10 +51,7 @@ class VisualDeadReckoner:
         image_shape: tuple[int, int],
         inlier_ratio: float,
     ) -> RelativePose2D:
-        if (
-            homography is None
-            or inlier_ratio < self.minimum_confidence
-        ):
+        if homography is None or inlier_ratio < self.minimum_confidence:
             self.vx = 0.0
             self.vy = 0.0
             self.confidence *= self.confidence_decay
@@ -80,12 +77,8 @@ class VisualDeadReckoner:
 
         warped = warped / warped[2]
 
-        image_dx = float(
-            warped[0] - center[0]
-        )
-        image_dy = float(
-            warped[1] - center[1]
-        )
+        image_dx = float(warped[0] - center[0])
+        image_dy = float(warped[1] - center[1])
 
         # Homography describes image motion.
         # Approximate camera motion points in the opposite direction.

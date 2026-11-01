@@ -82,24 +82,12 @@ class OpenCVLandingPerception:
             update_visual_state=not active_perception,
         )
 
-        perception_quality = (
-            self.perception_quality_monitor.analyze(
-                gray,
-                has_reference=(
-                    reference_gray is not None
-                ),
-                match_count=int(
-                    motion_metrics["match_count"]
-                ),
-                inlier_ratio=float(
-                    motion_metrics["inlier_ratio"]
-                ),
-                compensation_used=bool(
-                    motion_metrics[
-                        "compensation_used"
-                    ]
-                ),
-            )
+        perception_quality = self.perception_quality_monitor.analyze(
+            gray,
+            has_reference=(reference_gray is not None),
+            match_count=int(motion_metrics["match_count"]),
+            inlier_ratio=float(motion_metrics["inlier_ratio"]),
+            compensation_used=bool(motion_metrics["compensation_used"]),
         )
 
         candidates = self._score_grid(gray, edges, texture, motion_mask, motion_boxes)
@@ -123,7 +111,9 @@ class OpenCVLandingPerception:
         evidence_id = hashlib.sha1(json.dumps(payload, sort_keys=True).encode()).hexdigest()[:12]
         elapsed_ms = (time.perf_counter() - started) * 1000
         notes = (
-            "CLAHE active-perception retry applied." if active_perception else "Base exposure pass.",
+            "CLAHE active-perception retry applied."
+            if active_perception
+            else "Base exposure pass.",
             f"Detected {len(motion_boxes)} moving regions.",
         )
         motion_object_center = None
@@ -150,24 +140,12 @@ class OpenCVLandingPerception:
             candidates=tuple(candidates),
             active_perception_used=active_perception,
             processing_ms=round(elapsed_ms, 3),
-            camera_compensation_used=bool(
-                motion_metrics["compensation_used"]
-            ),
-            camera_match_count=int(
-                motion_metrics["match_count"]
-            ),
-            camera_inlier_count=int(
-                motion_metrics["inlier_count"]
-            ),
-            camera_inlier_ratio=float(
-                motion_metrics["inlier_ratio"]
-            ),
-            raw_motion_risk=float(
-                motion_metrics["raw_motion_risk"]
-            ),
-            motion_suppression_ratio=float(
-                motion_metrics["suppression_ratio"]
-            ),
+            camera_compensation_used=bool(motion_metrics["compensation_used"]),
+            camera_match_count=int(motion_metrics["match_count"]),
+            camera_inlier_count=int(motion_metrics["inlier_count"]),
+            camera_inlier_ratio=float(motion_metrics["inlier_ratio"]),
+            raw_motion_risk=float(motion_metrics["raw_motion_risk"]),
+            motion_suppression_ratio=float(motion_metrics["suppression_ratio"]),
             motion_object_center=motion_object_center,
             visual_localization_valid=bool(
                 motion_metrics.get(
@@ -181,56 +159,23 @@ class OpenCVLandingPerception:
                     0.0,
                 )
             ),
-            visual_relative_x=float(
-                motion_metrics.get("visual_relative_x", 0.0)
-            ),
-            visual_relative_y=float(
-                motion_metrics.get("visual_relative_y", 0.0)
-            ),
-            visual_velocity_x=float(
-                motion_metrics.get("visual_velocity_x", 0.0)
-            ),
-            visual_velocity_y=float(
-                motion_metrics.get("visual_velocity_y", 0.0)
-            ),
-
-            perception_quality_score=(
-                perception_quality.quality_score
-            ),
-            perception_failure_type=(
-                perception_quality.failure_type.value
-            ),
-
-            perception_mean_brightness=(
-                perception_quality.mean_brightness
-            ),
-            perception_bright_ratio=(
-                perception_quality.bright_ratio
-            ),
-            perception_dark_ratio=(
-                perception_quality.dark_ratio
-            ),
-            perception_sharpness=(
-                perception_quality.sharpness
-            ),
-            perception_entropy_bits=(
-                perception_quality.entropy_bits
-            ),
-            perception_feature_count=(
-                perception_quality.feature_count
-            ),
-            perception_largest_dark_region_ratio=(
-                perception_quality
-                .largest_dark_region_ratio
-            ),
-            perception_geometry_score=(
-                perception_quality.geometry_score
-            ),
-            perception_failure_reasons=(
-                perception_quality.reasons
-            ),
-
-            notes=notes + (
+            visual_relative_x=float(motion_metrics.get("visual_relative_x", 0.0)),
+            visual_relative_y=float(motion_metrics.get("visual_relative_y", 0.0)),
+            visual_velocity_x=float(motion_metrics.get("visual_velocity_x", 0.0)),
+            visual_velocity_y=float(motion_metrics.get("visual_velocity_y", 0.0)),
+            perception_quality_score=(perception_quality.quality_score),
+            perception_failure_type=(perception_quality.failure_type.value),
+            perception_mean_brightness=(perception_quality.mean_brightness),
+            perception_bright_ratio=(perception_quality.bright_ratio),
+            perception_dark_ratio=(perception_quality.dark_ratio),
+            perception_sharpness=(perception_quality.sharpness),
+            perception_entropy_bits=(perception_quality.entropy_bits),
+            perception_feature_count=(perception_quality.feature_count),
+            perception_largest_dark_region_ratio=(perception_quality.largest_dark_region_ratio),
+            perception_geometry_score=(perception_quality.geometry_score),
+            perception_failure_reasons=(perception_quality.reasons),
+            notes=notes
+            + (
                 (
                     "Perception self-diagnosis: "
                     f"{perception_quality.failure_type.value}; "
@@ -311,11 +256,7 @@ class OpenCVLandingPerception:
 
         if update_visual_state:
             visual_pose = self.visual_dead_reckoner.update(
-                homography=(
-                    compensation.homography
-                    if compensation.success
-                    else None
-                ),
+                homography=(compensation.homography if compensation.success else None),
                 image_shape=gray.shape,
                 inlier_ratio=compensation.inlier_ratio,
             )
@@ -326,9 +267,7 @@ class OpenCVLandingPerception:
             visual_pose = self.visual_dead_reckoner.current()
 
         aligned_reference = (
-            compensation.aligned_previous
-            if compensation.success
-            else reference_gray
+            compensation.aligned_previous if compensation.success else reference_gray
         )
 
         flow = cv2.calcOpticalFlowFarneback(
@@ -352,20 +291,14 @@ class OpenCVLandingPerception:
         raw_mean = float(np.mean(raw_magnitude))
         compensated_mean = float(np.mean(magnitude))
 
-        suppression_ratio = (
-            1.0 - compensated_mean / raw_mean
-            if raw_mean > 1e-6
-            else 0.0
-        )
+        suppression_ratio = 1.0 - compensated_mean / raw_mean if raw_mean > 1e-6 else 0.0
 
         suppression_ratio = max(
             0.0,
             min(1.0, suppression_ratio),
         )
 
-        mask = np.uint8(
-            magnitude > self.config.flow_threshold
-        ) * 255
+        mask = np.uint8(magnitude > self.config.flow_threshold) * 255
 
         kernel = cv2.getStructuringElement(
             cv2.MORPH_ELLIPSE,
@@ -498,7 +431,9 @@ class OpenCVLandingPerception:
         return sorted(candidates, key=lambda candidate: candidate.score, reverse=True)
 
     @staticmethod
-    def _annotate(frame: Any, evidence: VisionEvidence, boxes: list[tuple[int, int, int, int]]) -> Any:
+    def _annotate(
+        frame: Any, evidence: VisionEvidence, boxes: list[tuple[int, int, int, int]]
+    ) -> Any:
         best_id = evidence.best_zone.zone_id if evidence.best_zone else None
         for candidate in evidence.candidates:
             x, y, w, h = candidate.bbox_xywh
@@ -517,7 +452,15 @@ class OpenCVLandingPerception:
             )
         for x, y, w, h in boxes:
             cv2.rectangle(frame, (x, y), (x + w, y + h), (55, 55, 255), 2)
-            cv2.putText(frame, "MOTION", (x, max(18, y - 5)), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (55, 55, 255), 2)
+            cv2.putText(
+                frame,
+                "MOTION",
+                (x, max(18, y - 5)),
+                cv2.FONT_HERSHEY_SIMPLEX,
+                0.5,
+                (55, 55, 255),
+                2,
+            )
         cv2.rectangle(frame, (0, 0), (frame.shape[1], 42), (10, 16, 25), -1)
         cv2.putText(
             frame,

@@ -99,9 +99,7 @@ def load_euroc_groundtruth(path: Path | str) -> Trajectory:
             quaternions.append([x, y, z, w])
     if not timestamps:
         raise ValueError(f"{path}: no ground-truth rows")
-    return Trajectory(
-        np.array(timestamps), np.array(positions), _normalized(np.array(quaternions))
-    )
+    return Trajectory(np.array(timestamps), np.array(positions), _normalized(np.array(quaternions)))
 
 
 def associate(
@@ -220,9 +218,7 @@ def relative_pose_error(
     translation_errors, rotation_errors = [], []
     for (e0, g0), (e1, g1) in zip(pairs, pairs[delta_frames:]):
         estimate_delta = np.linalg.inv(_pose_matrix(estimate, e0)) @ _pose_matrix(estimate, e1)
-        truth_delta = np.linalg.inv(_pose_matrix(ground_truth, g0)) @ _pose_matrix(
-            ground_truth, g1
-        )
+        truth_delta = np.linalg.inv(_pose_matrix(ground_truth, g0)) @ _pose_matrix(ground_truth, g1)
         error = np.linalg.inv(truth_delta) @ estimate_delta
         translation_errors.append(float(np.linalg.norm(error[:3, 3])))
         cosine = (np.trace(error[:3, :3]) - 1.0) / 2.0

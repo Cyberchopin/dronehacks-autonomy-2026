@@ -20,15 +20,11 @@ def test_watchdog_health_transitions(
     age_s,
     expected,
 ) -> None:
-    result = evaluate_telemetry_freshness(
-        age_s
-    )
+    result = evaluate_telemetry_freshness(age_s)
 
     assert result.health == expected
 
 
 def test_watchdog_rejects_negative_age() -> None:
     with pytest.raises(ValueError):
-        evaluate_telemetry_freshness(
-            -0.1
-        )
+        evaluate_telemetry_freshness(-0.1)

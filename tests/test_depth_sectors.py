@@ -20,8 +20,9 @@ def wall(distance: float) -> tuple[np.ndarray, np.ndarray]:
 
 def test_flat_wall_gives_ray_ranges_and_center_sector_at_wall_distance() -> None:
     depth, valid = wall(3.0)
-    report = sector_report(depth, valid, 1_000, K, now_ns=1_000 + 20_000_000,
-                           config=SectorConfig(sectors=5))
+    report = sector_report(
+        depth, valid, 1_000, K, now_ns=1_000 + 20_000_000, config=SectorConfig(sectors=5)
+    )
     center = report.sectors[2]
     assert center.valid and center.reason == "ok"
     assert center.nearest_m == pytest.approx(3.0, abs=0.01)
@@ -46,8 +47,9 @@ def test_invalid_blind_zone_and_stale_data_are_not_reported_as_free() -> None:
     depth, valid = wall(3.0)
     valid[:, :160] = False  # left half has no depth
     depth[:, 200:240] = 0.1  # something inside the blind zone
-    report = sector_report(depth, valid, 0, K, now_ns=500_000_000,
-                           config=SectorConfig(sectors=4, min_range_m=0.3))
+    report = sector_report(
+        depth, valid, 0, K, now_ns=500_000_000, config=SectorConfig(sectors=4, min_range_m=0.3)
+    )
     assert report.sectors[0].valid is False
     assert report.sectors[0].reason == "too few valid depth pixels"
     assert report.sectors[2].valid is False
@@ -58,8 +60,9 @@ def test_invalid_blind_zone_and_stale_data_are_not_reported_as_free() -> None:
 def test_far_scene_is_clear_to_max_range_and_inputs_are_validated() -> None:
     depth, valid = wall(50.0)
     report = sector_report(depth, valid, 0, K, now_ns=0, config=SectorConfig(max_range_m=10.0))
-    assert all(s.valid and s.nearest_m is None and s.reason.startswith("clear") for s in
-               report.sectors)
+    assert all(
+        s.valid and s.nearest_m is None and s.reason.startswith("clear") for s in report.sectors
+    )
     with pytest.raises(ValueError, match="boolean"):
         sector_report(depth, valid.astype(np.uint8), 0, K, now_ns=0)
 

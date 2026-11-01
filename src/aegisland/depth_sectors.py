@@ -104,8 +104,11 @@ def sector_report(
         ranges = depth_m * ray_scale
     usable = valid & np.isfinite(ranges) & (depth_m > 0)
     band = np.abs(elevation) <= config.vertical_band_deg
-    half = (config.horizontal_fov_deg / 2 if config.horizontal_fov_deg is not None
-            else float(min(abs(azimuth[0, 0]), abs(azimuth[0, -1]))))
+    half = (
+        config.horizontal_fov_deg / 2
+        if config.horizontal_fov_deg is not None
+        else float(min(abs(azimuth[0, 0]), abs(azimuth[0, -1])))
+    )
     edges = np.linspace(-half, half, config.sectors + 1)
     results = []
     for left, right in itertools.pairwise(edges):
@@ -119,24 +122,36 @@ def sector_report(
             continue
         if too_close > config.min_valid_pixels:
             # Something is inside the blind zone: not measurable, but not "free" either.
-            results.append(SectorResult((left, right), None, fraction, False,
-                                        "returns inside min range (blind zone)"))
+            results.append(
+                SectorResult(
+                    (left, right), None, fraction, False, "returns inside min range (blind zone)"
+                )
+            )
             continue
         if good.sum() < config.min_valid_pixels or fraction < config.min_valid_fraction:
-            results.append(SectorResult((left, right), None, fraction, False,
-                                        "too few valid depth pixels"))
+            results.append(
+                SectorResult((left, right), None, fraction, False, "too few valid depth pixels")
+            )
             continue
         nearest = float(np.percentile(ranges[good], config.percentile))
         if nearest > config.max_range_m:
-            results.append(SectorResult((left, right), None, fraction, True,
-                                        f"clear to max range {config.max_range_m} m"))
+            results.append(
+                SectorResult(
+                    (left, right),
+                    None,
+                    fraction,
+                    True,
+                    f"clear to max range {config.max_range_m} m",
+                )
+            )
             continue
         results.append(SectorResult((left, right), nearest, fraction, True, "ok"))
     age_ms = (now_ns - timestamp_ns) / 1e6
     in_band = band & (np.abs(azimuth) <= half)
     frame_fraction = float((usable & in_band).sum()) / max(1, int(in_band.sum()))
-    return ObstacleReport(timestamp_ns, age_ms, 0 <= age_ms <= config.max_age_ms, frame_fraction,
-                          tuple(results))
+    return ObstacleReport(
+        timestamp_ns, age_ms, 0 <= age_ms <= config.max_age_ms, frame_fraction, tuple(results)
+    )
 
 
 def depth_from_oak_mm(depth_mm: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
@@ -146,8 +161,9 @@ def depth_from_oak_mm(depth_mm: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
     return depth_mm.astype(np.float32) / 1000.0, depth_mm > 0
 
 
-def depth_from_disparity(disparity_px: np.ndarray, focal_px: float, baseline_m: float,
-                         min_disparity_px: float = 0.5) -> tuple[np.ndarray, np.ndarray]:
+def depth_from_disparity(
+    disparity_px: np.ndarray, focal_px: float, baseline_m: float, min_disparity_px: float = 0.5
+) -> tuple[np.ndarray, np.ndarray]:
     """Disparity (px, float) -> (z metres, valid mask); invalid where disparity is too small."""
     valid = np.isfinite(disparity_px) & (disparity_px >= min_disparity_px)
     depth = np.zeros(disparity_px.shape, np.float32)

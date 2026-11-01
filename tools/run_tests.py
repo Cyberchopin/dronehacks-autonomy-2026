@@ -22,4 +22,4 @@ tempfile.tempdir = str(TMP)
 
 import pytest  # noqa: E402
 
-raise SystemExit(pytest.main(["-q", f"--basetemp={TMP / 'pytest'}"]))
+raise SystemExit(pytest.main(["-q", f"--basetemp={TMP / 'pytest'}", *sys.argv[1:]]))

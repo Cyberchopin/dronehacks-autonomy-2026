@@ -50,14 +50,10 @@ class SensorHealthMonitor:
         degraded_confidence_scale: float = 0.70,
     ) -> None:
         if not 0.0 <= failed_gate <= healthy_gate <= 1.0:
-            raise ValueError(
-                "Expected 0 <= failed_gate <= healthy_gate <= 1"
-            )
+            raise ValueError("Expected 0 <= failed_gate <= healthy_gate <= 1")
 
         if recovery_samples < 1:
-            raise ValueError(
-                "recovery_samples must be at least 1"
-            )
+            raise ValueError("recovery_samples must be at least 1")
 
         self.healthy_gate = healthy_gate
         self.failed_gate = failed_gate
@@ -135,10 +131,7 @@ class SensorHealthMonitor:
                     state,
                     confidence,
                     valid=True,
-                    effective_confidence=(
-                        confidence
-                        * self.degraded_confidence_scale
-                    ),
+                    effective_confidence=(confidence * self.degraded_confidence_scale),
                     reason="Sensor is recovering but has not satisfied hysteresis.",
                 )
 
@@ -150,10 +143,7 @@ class SensorHealthMonitor:
                 state,
                 confidence,
                 valid=True,
-                effective_confidence=(
-                    confidence
-                    * self.degraded_confidence_scale
-                ),
+                effective_confidence=(confidence * self.degraded_confidence_scale),
                 reason="Sensor remains below the healthy confidence gate.",
             )
 
@@ -167,10 +157,7 @@ class SensorHealthMonitor:
                 state,
                 confidence,
                 valid=True,
-                effective_confidence=(
-                    confidence
-                    * self.degraded_confidence_scale
-                ),
+                effective_confidence=(confidence * self.degraded_confidence_scale),
                 reason="Sensor confidence is usable but degraded.",
             )
 
@@ -184,10 +171,7 @@ class SensorHealthMonitor:
                     state,
                     confidence,
                     valid=True,
-                    effective_confidence=(
-                        confidence
-                        * self.degraded_confidence_scale
-                    ),
+                    effective_confidence=(confidence * self.degraded_confidence_scale),
                     reason="Healthy observations are accumulating for recovery.",
                 )
 

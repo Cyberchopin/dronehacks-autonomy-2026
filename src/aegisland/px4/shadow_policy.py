@@ -33,12 +33,8 @@ def decide_shadow_action(
 ) -> ShadowDecision:
     if link_health == LinkHealth.FAILED:
         return ShadowDecision(
-            navigation_mode=(
-                ShadowNavigationMode.DEGRADED
-            ),
-            authority=(
-                ShadowAuthority.REVOKED
-            ),
+            navigation_mode=(ShadowNavigationMode.DEGRADED),
+            authority=(ShadowAuthority.REVOKED),
             action=Action.HOLD_AND_SCAN,
             executed=False,
             reason="telemetry link failed",
@@ -46,12 +42,8 @@ def decide_shadow_action(
 
     if not gps_available:
         return ShadowDecision(
-            navigation_mode=(
-                ShadowNavigationMode.DEGRADED
-            ),
-            authority=(
-                ShadowAuthority.REVOKED
-            ),
+            navigation_mode=(ShadowNavigationMode.DEGRADED),
+            authority=(ShadowAuthority.REVOKED),
             action=Action.HOLD_AND_SCAN,
             executed=False,
             reason="gps unavailable",
@@ -59,21 +51,15 @@ def decide_shadow_action(
 
     if link_health == LinkHealth.DEGRADED:
         return ShadowDecision(
-            navigation_mode=(
-                ShadowNavigationMode.DEGRADED
-            ),
-            authority=(
-                ShadowAuthority.REVOKED
-            ),
+            navigation_mode=(ShadowNavigationMode.DEGRADED),
+            authority=(ShadowAuthority.REVOKED),
             action=Action.HOLD_AND_SCAN,
             executed=False,
             reason="telemetry link degraded",
         )
 
     return ShadowDecision(
-        navigation_mode=(
-            ShadowNavigationMode.GPS_PRIMARY
-        ),
+        navigation_mode=(ShadowNavigationMode.GPS_PRIMARY),
         authority=ShadowAuthority.GRANTED,
         action=Action.CONTINUE_MISSION,
         executed=False,

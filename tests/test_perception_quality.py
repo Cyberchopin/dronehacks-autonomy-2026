@@ -36,14 +36,9 @@ def analyze(
 
 
 def test_healthy_textured_frame() -> None:
-    result = analyze(
-        textured_frame()
-    )
+    result = analyze(textured_frame())
 
-    assert (
-        result.failure_type
-        == PerceptionFailureType.HEALTHY
-    )
+    assert result.failure_type == PerceptionFailureType.HEALTHY
 
     assert result.quality_score > 0.6
     assert result.feature_count > 40
@@ -58,10 +53,7 @@ def test_overexposure_is_semantically_detected() -> None:
 
     result = analyze(frame)
 
-    assert (
-        result.failure_type
-        == PerceptionFailureType.OVEREXPOSED
-    )
+    assert result.failure_type == PerceptionFailureType.OVEREXPOSED
 
     assert result.quality_score <= 0.25
 
@@ -74,10 +66,7 @@ def test_underexposure_is_semantically_detected() -> None:
 
     result = analyze(frame)
 
-    assert (
-        result.failure_type
-        == PerceptionFailureType.UNDEREXPOSED
-    )
+    assert result.failure_type == PerceptionFailureType.UNDEREXPOSED
 
     assert result.quality_score <= 0.25
 
@@ -91,10 +80,7 @@ def test_texture_degenerate_wall_is_detected() -> None:
 
     result = analyze(frame)
 
-    assert (
-        result.failure_type
-        == PerceptionFailureType.TEXTURE_DEGENERATE
-    )
+    assert result.failure_type == PerceptionFailureType.TEXTURE_DEGENERATE
 
 
 def test_blur_is_detected() -> None:
@@ -108,10 +94,7 @@ def test_blur_is_detected() -> None:
 
     result = analyze(blurred)
 
-    assert (
-        result.failure_type
-        == PerceptionFailureType.BLURRED
-    )
+    assert result.failure_type == PerceptionFailureType.BLURRED
 
 
 def test_large_occlusion_is_detected() -> None:
@@ -126,10 +109,7 @@ def test_large_occlusion_is_detected() -> None:
 
     result = analyze(frame)
 
-    assert (
-        result.failure_type
-        == PerceptionFailureType.OCCLUSION_SUSPECTED
-    )
+    assert result.failure_type == PerceptionFailureType.OCCLUSION_SUSPECTED
 
 
 def test_geometry_failure_is_distinguished_from_bad_image() -> None:
@@ -143,9 +123,6 @@ def test_geometry_failure_is_distinguished_from_bad_image() -> None:
         compensation_used=False,
     )
 
-    assert (
-        result.failure_type
-        == PerceptionFailureType.GEOMETRY_UNSTABLE
-    )
+    assert result.failure_type == PerceptionFailureType.GEOMETRY_UNSTABLE
 
     assert result.feature_count > 40

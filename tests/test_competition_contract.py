@@ -68,4 +68,3 @@ def test_hardware_needs_explicit_staff_gate():
 def test_contract_cannot_claim_execution():
     with pytest.raises(ValueError, match="cannot represent an executed"):
         advisory(executed=True)
-

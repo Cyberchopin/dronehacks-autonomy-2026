@@ -16,9 +16,7 @@ FEATURE_CACHE_SIZE = 2
 
 def require_opencv() -> None:
     if cv2 is None or np is None:
-        raise RuntimeError(
-            "OpenCV and NumPy are required. Run: pip install -e '.[dev]'"
-        )
+        raise RuntimeError("OpenCV and NumPy are required. Run: pip install -e '.[dev]'")
 
 
 @dataclass(frozen=True, slots=True)
@@ -149,17 +147,11 @@ class CameraMotionCompensator:
             )
 
         source_points = np.float32(
-            [
-                prev_keypoints[match.queryIdx].pt
-                for match in matches
-            ]
+            [prev_keypoints[match.queryIdx].pt for match in matches]
         ).reshape(-1, 1, 2)
 
         destination_points = np.float32(
-            [
-                curr_keypoints[match.trainIdx].pt
-                for match in matches
-            ]
+            [curr_keypoints[match.trainIdx].pt for match in matches]
         ).reshape(-1, 1, 2)
 
         homography, mask = cv2.findHomography(
@@ -244,23 +236,15 @@ class CameraMotionCompensator:
         )
 
         displacement = np.linalg.norm(
-            warped_corners.reshape(-1, 2)
-            - corners.reshape(-1, 2),
+            warped_corners.reshape(-1, 2) - corners.reshape(-1, 2),
             axis=1,
         )
 
-        image_diagonal = float(
-            np.hypot(width, height)
-        )
+        image_diagonal = float(np.hypot(width, height))
 
-        maximum_allowed = (
-            image_diagonal
-            * self.maximum_corner_displacement_ratio
-        )
+        maximum_allowed = image_diagonal * self.maximum_corner_displacement_ratio
 
-        return bool(
-            np.max(displacement) <= maximum_allowed
-        )
+        return bool(np.max(displacement) <= maximum_allowed)
 
     def _failure(self, previous_gray: Any) -> MotionCompensationResult:
         return MotionCompensationResult(

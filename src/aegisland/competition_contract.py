@@ -115,4 +115,3 @@ class SetpointSafetyGate:
             authority = Authority.HARDWARE_GATED
 
         return GateResult(not reasons, authority, tuple(reasons))
-

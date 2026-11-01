@@ -90,11 +90,7 @@ class Px4ShadowSupervisor:
 
         position_health = self._position_health.assess(
             "px4_global_position",
-            confidence=(
-                1.0
-                if global_position_valid
-                else 0.0
-            ),
+            confidence=(1.0 if global_position_valid else 0.0),
             valid=global_position_valid,
         )
 
@@ -102,80 +98,42 @@ class Px4ShadowSupervisor:
         #
         # Even if cached position still looks valid,
         # navigation cannot rely on stale data.
-        if (
-            effective_telemetry.state
-            != SensorHealthState.HEALTHY
-        ):
+        if effective_telemetry.state != SensorHealthState.HEALTHY:
             return Px4ShadowDecision(
-                navigation_mode=(
-                    ShadowNavigationMode.DEGRADED
-                ),
+                navigation_mode=(ShadowNavigationMode.DEGRADED),
                 authority=ShadowAuthority.REVOKED,
                 action=Action.HOLD_AND_SCAN,
                 executed=False,
-                global_position_state=(
-                    position_health.state
-                ),
-                recovery_streak=(
-                    position_health.recovery_streak
-                ),
-                telemetry_state=(
-                    effective_telemetry.state
-                ),
-                telemetry_recovery_streak=(
-                    effective_telemetry.recovery_streak
-                ),
+                global_position_state=(position_health.state),
+                recovery_streak=(position_health.recovery_streak),
+                telemetry_state=(effective_telemetry.state),
+                telemetry_recovery_streak=(effective_telemetry.recovery_streak),
                 reason=effective_telemetry.reason,
             )
 
         # Fresh telemetry alone is insufficient:
         # estimator validity must also be healthy.
-        if (
-            position_health.state
-            != SensorHealthState.HEALTHY
-        ):
+        if position_health.state != SensorHealthState.HEALTHY:
             return Px4ShadowDecision(
-                navigation_mode=(
-                    ShadowNavigationMode.DEGRADED
-                ),
+                navigation_mode=(ShadowNavigationMode.DEGRADED),
                 authority=ShadowAuthority.REVOKED,
                 action=Action.HOLD_AND_SCAN,
                 executed=False,
-                global_position_state=(
-                    position_health.state
-                ),
-                recovery_streak=(
-                    position_health.recovery_streak
-                ),
-                telemetry_state=(
-                    effective_telemetry.state
-                ),
-                telemetry_recovery_streak=(
-                    effective_telemetry.recovery_streak
-                ),
+                global_position_state=(position_health.state),
+                recovery_streak=(position_health.recovery_streak),
+                telemetry_state=(effective_telemetry.state),
+                telemetry_recovery_streak=(effective_telemetry.recovery_streak),
                 reason=position_health.reason,
             )
 
         return Px4ShadowDecision(
-            navigation_mode=(
-                ShadowNavigationMode.GPS_PRIMARY
-            ),
+            navigation_mode=(ShadowNavigationMode.GPS_PRIMARY),
             authority=ShadowAuthority.GRANTED,
             action=Action.CONTINUE_MISSION,
             executed=False,
-            global_position_state=(
-                position_health.state
-            ),
-            recovery_streak=(
-                position_health.recovery_streak
-            ),
-            telemetry_state=(
-                effective_telemetry.state
-            ),
-            telemetry_recovery_streak=(
-                effective_telemetry.recovery_streak
-            ),
-            reason=(
-                "Telemetry and navigation capability are healthy."
-            ),
+            global_position_state=(position_health.state),
+            recovery_streak=(position_health.recovery_streak),
+            telemetry_state=(effective_telemetry.state),
+            telemetry_recovery_streak=(effective_telemetry.recovery_streak),
+            reason=("Telemetry and navigation capability are healthy."),
         )

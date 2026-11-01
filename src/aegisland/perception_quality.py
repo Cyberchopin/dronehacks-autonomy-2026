@@ -88,9 +88,7 @@ class PerceptionQualityMonitor:
         compensation_used: bool,
     ) -> PerceptionQualityResult:
         if gray is None or gray.size == 0:
-            raise ValueError(
-                "gray must be a non-empty image"
-            )
+            raise ValueError("gray must be a non-empty image")
 
         if gray.ndim == 3:
             gray = cv2.cvtColor(
@@ -98,23 +96,13 @@ class PerceptionQualityMonitor:
                 cv2.COLOR_BGR2GRAY,
             )
 
-        mean_brightness = float(
-            np.mean(gray)
-        )
+        mean_brightness = float(np.mean(gray))
 
-        bright_ratio = float(
-            np.mean(
-                gray >= self.bright_pixel_threshold
-            )
-        )
+        bright_ratio = float(np.mean(gray >= self.bright_pixel_threshold))
 
-        dark_mask = np.uint8(
-            gray <= self.dark_pixel_threshold
-        ) * 255
+        dark_mask = np.uint8(gray <= self.dark_pixel_threshold) * 255
 
-        dark_ratio = float(
-            np.mean(dark_mask > 0)
-        )
+        dark_ratio = float(np.mean(dark_mask > 0))
 
         sharpness = float(
             cv2.Laplacian(
@@ -132,11 +120,7 @@ class PerceptionQualityMonitor:
 
         feature_count = len(keypoints)
 
-        largest_dark_region_ratio = (
-            self._largest_region_ratio(
-                dark_mask
-            )
-        )
+        largest_dark_region_ratio = self._largest_region_ratio(dark_mask)
 
         image_score = self._image_score(
             bright_ratio=bright_ratio,
@@ -153,10 +137,7 @@ class PerceptionQualityMonitor:
         )
 
         if has_reference:
-            quality_score = (
-                0.70 * image_score
-                + 0.30 * geometry_score
-            )
+            quality_score = 0.70 * image_score + 0.30 * geometry_score
         else:
             quality_score = image_score
 
@@ -167,9 +148,7 @@ class PerceptionQualityMonitor:
             sharpness=sharpness,
             entropy_bits=entropy_bits,
             feature_count=feature_count,
-            largest_dark_region_ratio=(
-                largest_dark_region_ratio
-            ),
+            largest_dark_region_ratio=(largest_dark_region_ratio),
             has_reference=has_reference,
             match_count=match_count,
             inlier_ratio=inlier_ratio,
@@ -250,10 +229,7 @@ class PerceptionQualityMonitor:
         PerceptionFailureType,
         list[str],
     ]:
-        if (
-            bright_ratio >= self.overexposure_ratio
-            or mean_brightness >= 240.0
-        ):
+        if bright_ratio >= self.overexposure_ratio or mean_brightness >= 240.0:
             return (
                 PerceptionFailureType.OVEREXPOSED,
                 [
@@ -261,10 +237,7 @@ class PerceptionQualityMonitor:
                 ],
             )
 
-        if (
-            dark_ratio >= self.underexposure_ratio
-            or mean_brightness <= 15.0
-        ):
+        if dark_ratio >= self.underexposure_ratio or mean_brightness <= 15.0:
             return (
                 PerceptionFailureType.UNDEREXPOSED,
                 [
@@ -273,9 +246,7 @@ class PerceptionQualityMonitor:
             )
 
         if (
-            0.20
-            <= largest_dark_region_ratio
-            <= 0.90
+            0.20 <= largest_dark_region_ratio <= 0.90
             and dark_ratio >= 0.18
             and mean_brightness > 15.0
         ):
@@ -286,11 +257,7 @@ class PerceptionQualityMonitor:
                 ],
             )
 
-        if (
-            entropy_bits < self.texture_entropy_gate
-            and feature_count
-            < self.texture_feature_gate
-        ):
+        if entropy_bits < self.texture_entropy_gate and feature_count < self.texture_feature_gate:
             return (
                 PerceptionFailureType.TEXTURE_DEGENERATE,
                 [
@@ -298,11 +265,7 @@ class PerceptionQualityMonitor:
                 ],
             )
 
-        if (
-            sharpness < self.blur_sharpness_gate
-            and entropy_bits
-            >= self.texture_entropy_gate
-        ):
+        if sharpness < self.blur_sharpness_gate and entropy_bits >= self.texture_entropy_gate:
             return (
                 PerceptionFailureType.BLURRED,
                 [
@@ -314,12 +277,7 @@ class PerceptionQualityMonitor:
             has_reference
             and not compensation_used
             and feature_count >= 40
-            and (
-                match_count
-                < self.geometry_match_gate
-                or inlier_ratio
-                < self.geometry_inlier_gate
-            )
+            and (match_count < self.geometry_match_gate or inlier_ratio < self.geometry_inlier_gate)
         ):
             return (
                 PerceptionFailureType.GEOMETRY_UNSTABLE,
@@ -352,17 +310,9 @@ class PerceptionQualityMonitor:
         if total <= 0.0:
             return 0.0
 
-        probabilities = (
-            histogram[histogram > 0]
-            / total
-        )
+        probabilities = histogram[histogram > 0] / total
 
-        return float(
-            -np.sum(
-                probabilities
-                * np.log2(probabilities)
-            )
-        )
+        return float(-np.sum(probabilities * np.log2(probabilities)))
 
     @staticmethod
     def _largest_region_ratio(
@@ -377,15 +327,9 @@ class PerceptionQualityMonitor:
         if not contours:
             return 0.0
 
-        largest = max(
-            cv2.contourArea(contour)
-            for contour in contours
-        )
+        largest = max(cv2.contourArea(contour) for contour in contours)
 
-        return float(
-            largest
-            / max(1, binary_mask.size)
-        )
+        return float(largest / max(1, binary_mask.size))
 
     @staticmethod
     def _image_score(
@@ -398,7 +342,8 @@ class PerceptionQualityMonitor:
     ) -> float:
         exposure_score = max(
             0.0,
-            1.0 - max(
+            1.0
+            - max(
                 bright_ratio,
                 dark_ratio,
             ),
@@ -446,10 +391,7 @@ class PerceptionQualityMonitor:
             max(0.0, inlier_ratio / 0.70),
         )
 
-        return (
-            0.45 * match_score
-            + 0.55 * inlier_score
-        )
+        return 0.45 * match_score + 0.55 * inlier_score
 
     @staticmethod
     def _clamp(value: float) -> float:

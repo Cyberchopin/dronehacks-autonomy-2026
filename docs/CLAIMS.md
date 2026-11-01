@@ -15,6 +15,16 @@
 
 These counts are historical evidence. This repository must establish its own CI baseline.
 
+## Migration verification on 2026-11-01
+
+- 195 selected cross-platform tests passed on Windows/Python 3.12 after migration:
+  competition contract, course perception/adversarial cases, depth sectors, normalized
+  visual dead reckoning, sensor health, perception quality, benchmark contract and PX4
+  shadow/watchdog policy.
+- Ruff 0.14.3 check passed after formatting.
+- The forensics integration suite deliberately retains Linux `O_NOFOLLOW` hardening and
+  is therefore verified by Ubuntu CI rather than claimed portable to Windows.
+
 ## Unknown until official simulation/hardware
 
 - Exact ROS 2 topics, QoS and message compatibility.
