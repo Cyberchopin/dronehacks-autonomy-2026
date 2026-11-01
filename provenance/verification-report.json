@@ -1,0 +1,479 @@
+{
+  "status": "PASS",
+  "checks": {
+    "csv_counts": {
+      "data_rows_excluding_header": 60,
+      "categories": {
+        "excluded_large_asset": 2,
+        "release_asset_metadata_only": 14,
+        "small_source_or_document_evidence": 44
+      },
+      "category_sum": 60,
+      "projects": {
+        "cuvslam": 22,
+        "depthai": 11,
+        "euroc": 2,
+        "ffs": 6,
+        "kimera": 11,
+        "ros": 7,
+        "ros_dependency": 1
+      },
+      "project_sum": 60
+    },
+    "hash_bindings": {
+      "local_rows": 44,
+      "distinct_digests_and_canonical_paths": 43,
+      "source_record_bytes": 1244609,
+      "bindings": [
+        {
+          "artifact_id": "cuvslam@51631ba358ea51262342f9ae649820d639363eb9:CMakeLists.txt",
+          "source_relative_path": "cuvslam/CMakeLists.txt",
+          "local_relative_path": "by-sha256/c08e7029d3cfe39dc4f83596d1596ba762b232053a990490520a6ed8089a605e",
+          "sha256": "c08e7029d3cfe39dc4f83596d1596ba762b232053a990490520a6ed8089a605e",
+          "size_bytes": 5740
+        },
+        {
+          "artifact_id": "cuvslam@51631ba358ea51262342f9ae649820d639363eb9:LICENSE",
+          "source_relative_path": "cuvslam/LICENSE",
+          "local_relative_path": "by-sha256/f369a8d255622b2ad0108b65dacb62b96c40a3a113f7893218436188bdc373fd",
+          "sha256": "f369a8d255622b2ad0108b65dacb62b96c40a3a113f7893218436188bdc373fd",
+          "size_bytes": 8178
+        },
+        {
+          "artifact_id": "cuvslam@51631ba358ea51262342f9ae649820d639363eb9:README.md",
+          "source_relative_path": "cuvslam/README.md",
+          "local_relative_path": "by-sha256/c830b2c68d76ec315bfef722f22a728ff09f8c43f045c8fde8314099bf6c2d11",
+          "sha256": "c830b2c68d76ec315bfef722f22a728ff09f8c43f045c8fde8314099bf6c2d11",
+          "size_bytes": 16629
+        },
+        {
+          "artifact_id": "cuvslam@51631ba358ea51262342f9ae649820d639363eb9:examples/euroc/README.md",
+          "source_relative_path": "cuvslam/examples/euroc/README.md",
+          "local_relative_path": "by-sha256/0041142e05bf45ca94ab77c557e8fb7fbe772743dbec89b1a0ed6cfccb25b0bf",
+          "sha256": "0041142e05bf45ca94ab77c557e8fb7fbe772743dbec89b1a0ed6cfccb25b0bf",
+          "size_bytes": 5150
+        },
+        {
+          "artifact_id": "cuvslam@51631ba358ea51262342f9ae649820d639363eb9:examples/euroc/dataset_utils.py",
+          "source_relative_path": "cuvslam/examples/euroc/dataset_utils.py",
+          "local_relative_path": "by-sha256/45b2854569dfd891be5f317437034f44ac652ee85fbf321f147428e89dbe8416",
+          "sha256": "45b2854569dfd891be5f317437034f44ac652ee85fbf321f147428e89dbe8416",
+          "size_bytes": 10945
+        },
+        {
+          "artifact_id": "cuvslam@51631ba358ea51262342f9ae649820d639363eb9:examples/euroc/track_euroc.py",
+          "source_relative_path": "cuvslam/examples/euroc/track_euroc.py",
+          "local_relative_path": "by-sha256/8732d43cf9ec8e777336ed406002f64903bf38caa49eb85add7c3d85c0d513ed",
+          "sha256": "8732d43cf9ec8e777336ed406002f64903bf38caa49eb85add7c3d85c0d513ed",
+          "size_bytes": 8064
+        },
+        {
+          "artifact_id": "cuvslam@51631ba358ea51262342f9ae649820d639363eb9:examples/oak-d/README.md",
+          "source_relative_path": "cuvslam/examples/oak-d/README.md",
+          "local_relative_path": "by-sha256/9f11c38308fdb9deea916bb01bddc47803de9a3dda2ee92a855a526f8bb67e92",
+          "sha256": "9f11c38308fdb9deea916bb01bddc47803de9a3dda2ee92a855a526f8bb67e92",
+          "size_bytes": 3336
+        },
+        {
+          "artifact_id": "cuvslam@51631ba358ea51262342f9ae649820d639363eb9:examples/oak-d/run_stereo.py",
+          "source_relative_path": "cuvslam/examples/oak-d/run_stereo.py",
+          "local_relative_path": "by-sha256/33e99be52f8ae8e3a650f5a923c3be66ab33805b85bcabc9ec2b0b0001fee7d9",
+          "sha256": "33e99be52f8ae8e3a650f5a923c3be66ab33805b85bcabc9ec2b0b0001fee7d9",
+          "size_bytes": 8842
+        },
+        {
+          "artifact_id": "depthai@e9ead6536e1bf9842d91211fcf80f0b4ef119954:.gitmodules",
+          "source_relative_path": "depthai/.gitmodules",
+          "local_relative_path": "by-sha256/bd6ed8e52218ecf5ecb7aea145bee6812243f6869e8987c12b4b27d00be62577",
+          "sha256": "bd6ed8e52218ecf5ecb7aea145bee6812243f6869e8987c12b4b27d00be62577",
+          "size_bytes": 901
+        },
+        {
+          "artifact_id": "depthai@e9ead6536e1bf9842d91211fcf80f0b4ef119954:LICENSE",
+          "source_relative_path": "depthai/LICENSE",
+          "local_relative_path": "by-sha256/5fe6d4ec2aa4e228142ee71084d1c8bfea474238fee8d49bd10e8cbd0b44ace1",
+          "sha256": "5fe6d4ec2aa4e228142ee71084d1c8bfea474238fee8d49bd10e8cbd0b44ace1",
+          "size_bytes": 1068
+        },
+        {
+          "artifact_id": "depthai@e9ead6536e1bf9842d91211fcf80f0b4ef119954:README.md",
+          "source_relative_path": "depthai/README.md",
+          "local_relative_path": "by-sha256/b8f10e57daeb4c2a1b60b67778cab2c854f82720ea62ea840bd98a2428b6223e",
+          "sha256": "b8f10e57daeb4c2a1b60b67778cab2c854f82720ea62ea840bd98a2428b6223e",
+          "size_bytes": 36821
+        },
+        {
+          "artifact_id": "depthai@e9ead6536e1bf9842d91211fcf80f0b4ef119954:cmake/Depthai/DepthaiDeviceSideConfig.cmake",
+          "source_relative_path": "depthai/cmake/Depthai/DepthaiDeviceSideConfig.cmake",
+          "local_relative_path": "by-sha256/3e025ebf1ede44c5b4198d8712092fca18cf8a5f4c2373c14510922454802658",
+          "sha256": "3e025ebf1ede44c5b4198d8712092fca18cf8a5f4c2373c14510922454802658",
+          "size_bytes": 267
+        },
+        {
+          "artifact_id": "depthai@e9ead6536e1bf9842d91211fcf80f0b4ef119954:examples/python/IMU/imu_gyroscope_accelerometer.py",
+          "source_relative_path": "depthai/examples/python/IMU/imu_gyroscope_accelerometer.py",
+          "local_relative_path": "by-sha256/77fdc8fc6fc24d9a3b3a3bfb930f5a483e5ad7907227b823a2f9033d89a426df",
+          "sha256": "77fdc8fc6fc24d9a3b3a3bfb930f5a483e5ad7907227b823a2f9033d89a426df",
+          "size_bytes": 2437
+        },
+        {
+          "artifact_id": "depthai@e9ead6536e1bf9842d91211fcf80f0b4ef119954:examples/python/StereoDepth/stereo.py",
+          "source_relative_path": "depthai/examples/python/StereoDepth/stereo.py",
+          "local_relative_path": "by-sha256/9c89967f1b1bbd16e7fb7703d8ca1d1bb4a11bcb1dd97b620f2abb15ecc5c858",
+          "sha256": "9c89967f1b1bbd16e7fb7703d8ca1d1bb4a11bcb1dd97b620f2abb15ecc5c858",
+          "size_bytes": 986
+        },
+        {
+          "artifact_id": "depthai@e9ead6536e1bf9842d91211fcf80f0b4ef119954:include/depthai/pipeline/datatype/IMUData.hpp",
+          "source_relative_path": "depthai/include/depthai/pipeline/datatype/IMUData.hpp",
+          "local_relative_path": "by-sha256/2baa804a48980a5e55465e45fbefeeafabcadd68eaf230220bd9947cf59fddcf",
+          "sha256": "2baa804a48980a5e55465e45fbefeeafabcadd68eaf230220bd9947cf59fddcf",
+          "size_bytes": 8333
+        },
+        {
+          "artifact_id": "depthai@e9ead6536e1bf9842d91211fcf80f0b4ef119954:include/depthai/pipeline/node/StereoDepth.hpp",
+          "source_relative_path": "depthai/include/depthai/pipeline/node/StereoDepth.hpp",
+          "local_relative_path": "by-sha256/41f0dc23defee1afcc4694e457d331886becf87c43fb220585b35abff9c2f6e1",
+          "sha256": "41f0dc23defee1afcc4694e457d331886becf87c43fb220585b35abff9c2f6e1",
+          "size_bytes": 14980
+        },
+        {
+          "artifact_id": "depthai@e9ead6536e1bf9842d91211fcf80f0b4ef119954:notices/THIRD_PARTY_NOTICES",
+          "source_relative_path": "depthai/notices/THIRD_PARTY_NOTICES",
+          "local_relative_path": "by-sha256/a63d1d1f44c96037dc84106b23d5f7543dfa22c8878e4daed081babcd1272774",
+          "sha256": "a63d1d1f44c96037dc84106b23d5f7543dfa22c8878e4daed081babcd1272774",
+          "size_bytes": 384862
+        },
+        {
+          "artifact_id": "depthai@e9ead6536e1bf9842d91211fcf80f0b4ef119954:notices/depthai-device-RVC2-LICENSE",
+          "source_relative_path": "depthai/notices/depthai-device-RVC2-LICENSE",
+          "local_relative_path": "by-sha256/dc62c000d32a3336bdfd1d3df0509865d4f93ad2bd9bbe185dcee3e3713134c0",
+          "sha256": "dc62c000d32a3336bdfd1d3df0509865d4f93ad2bd9bbe185dcee3e3713134c0",
+          "size_bytes": 39898
+        },
+        {
+          "artifact_id": "depthai@e9ead6536e1bf9842d91211fcf80f0b4ef119954:notices/depthai-device-RVC4-LICENSE",
+          "source_relative_path": "depthai/notices/depthai-device-RVC4-LICENSE",
+          "local_relative_path": "by-sha256/f5a79ff75e1b81cbf688f5929dd6bcc596d2f1c9e69757f50e78ac99ed2591a1",
+          "sha256": "f5a79ff75e1b81cbf688f5929dd6bcc596d2f1c9e69757f50e78ac99ed2591a1",
+          "size_bytes": 112701
+        },
+        {
+          "artifact_id": "euroc@0ee434728bf1f13a14f86937baf53edd30ea556a:_datasets/euroc_mav.md",
+          "source_relative_path": "euroc/_datasets/euroc_mav.md",
+          "local_relative_path": "by-sha256/a51da9c1ab058ca5f85b0260941dfa1d39d5fd65597aa185af927d79be9bf344",
+          "sha256": "a51da9c1ab058ca5f85b0260941dfa1d39d5fd65597aa185af927d79be9bf344",
+          "size_bytes": 2814
+        },
+        {
+          "artifact_id": "ffs@476f4249561f7c79ca707326954f9255643412a6:LICENSE.txt",
+          "source_relative_path": "ffs/LICENSE.txt",
+          "local_relative_path": "by-sha256/045b564ebafefaa863beec07c5acdcfa8d99cefbbd060c22865bc4613318ddd6",
+          "sha256": "045b564ebafefaa863beec07c5acdcfa8d99cefbbd060c22865bc4613318ddd6",
+          "size_bytes": 4338
+        },
+        {
+          "artifact_id": "ffs@476f4249561f7c79ca707326954f9255643412a6:cpp/README.md",
+          "source_relative_path": "ffs/cpp/README.md",
+          "local_relative_path": "by-sha256/85a6a826b0901f3387dd2b7ee8bbde81ea9b9a61d663f3da75d23860bb56ca35",
+          "sha256": "85a6a826b0901f3387dd2b7ee8bbde81ea9b9a61d663f3da75d23860bb56ca35",
+          "size_bytes": 9833
+        },
+        {
+          "artifact_id": "ffs@476f4249561f7c79ca707326954f9255643412a6:model_card.md",
+          "source_relative_path": "ffs/model_card.md",
+          "local_relative_path": "by-sha256/604bee935908ad92e3b5c702dd0d6073895d5c1c7058e1b68d01fc8770c98b69",
+          "sha256": "604bee935908ad92e3b5c702dd0d6073895d5c1c7058e1b68d01fc8770c98b69",
+          "size_bytes": 5941
+        },
+        {
+          "artifact_id": "ffs@476f4249561f7c79ca707326954f9255643412a6:readme.md",
+          "source_relative_path": "ffs/readme.md",
+          "local_relative_path": "by-sha256/692c5def294146876ae05353acd785bfcd2100e82f943cd87e542406228de7d2",
+          "sha256": "692c5def294146876ae05353acd785bfcd2100e82f943cd87e542406228de7d2",
+          "size_bytes": 15932
+        },
+        {
+          "artifact_id": "ffs@476f4249561f7c79ca707326954f9255643412a6:requirements.txt",
+          "source_relative_path": "ffs/requirements.txt",
+          "local_relative_path": "by-sha256/080550f3115f281c89ca40bd6ad6e2f743c39cfb3d202e3878a26e82b539190a",
+          "sha256": "080550f3115f281c89ca40bd6ad6e2f743c39cfb3d202e3878a26e82b539190a",
+          "size_bytes": 286
+        },
+        {
+          "artifact_id": "kimera@ce8c59b7b273ab5ac29db7e5572e1623760e19c7:.gitmodules",
+          "source_relative_path": "kimera/.gitmodules",
+          "local_relative_path": "by-sha256/8cbb7a2366da3f99614dde495cbbb9beddbade10b933e1c4b9806d34abe49d2a",
+          "sha256": "8cbb7a2366da3f99614dde495cbbb9beddbade10b933e1c4b9806d34abe49d2a",
+          "size_bytes": 103
+        },
+        {
+          "artifact_id": "kimera@ce8c59b7b273ab5ac29db7e5572e1623760e19c7:CMakeLists.txt",
+          "source_relative_path": "kimera/CMakeLists.txt",
+          "local_relative_path": "by-sha256/bc2a4f8ab1f2d2690a90c9c1983f72d05e7c77a6f22ff10035a3d003abdc716d",
+          "sha256": "bc2a4f8ab1f2d2690a90c9c1983f72d05e7c77a6f22ff10035a3d003abdc716d",
+          "size_bytes": 13102
+        },
+        {
+          "artifact_id": "kimera@ce8c59b7b273ab5ac29db7e5572e1623760e19c7:LICENSE.BSD",
+          "source_relative_path": "kimera/LICENSE.BSD",
+          "local_relative_path": "by-sha256/9cf61e2c9ebb83fe29e3981ae79540fd7a82d2aefc3ce5f7242e2131e40e7d70",
+          "sha256": "9cf61e2c9ebb83fe29e3981ae79540fd7a82d2aefc3ce5f7242e2131e40e7d70",
+          "size_bytes": 1291
+        },
+        {
+          "artifact_id": "kimera@ce8c59b7b273ab5ac29db7e5572e1623760e19c7:README.md",
+          "source_relative_path": "kimera/README.md",
+          "local_relative_path": "by-sha256/be3d32e6f3cd112481574fb92b26f19a4dab7370b2aa60800dae67a6be035e1b",
+          "sha256": "be3d32e6f3cd112481574fb92b26f19a4dab7370b2aa60800dae67a6be035e1b",
+          "size_bytes": 14434
+        },
+        {
+          "artifact_id": "kimera@ce8c59b7b273ab5ac29db7e5572e1623760e19c7:docs/kimera_vio_install.md",
+          "source_relative_path": "kimera/docs/kimera_vio_install.md",
+          "local_relative_path": "by-sha256/b4d154ca24125e1c461e5cadda4f9aa864f6b67a75fe9c8314f09ea9b2ce7804",
+          "sha256": "b4d154ca24125e1c461e5cadda4f9aa864f6b67a75fe9c8314f09ea9b2ce7804",
+          "size_bytes": 9612
+        },
+        {
+          "artifact_id": "kimera@ce8c59b7b273ab5ac29db7e5572e1623760e19c7:include/kimera-vio/pipeline/Pipeline.h",
+          "source_relative_path": "kimera/include/kimera-vio/pipeline/Pipeline.h",
+          "local_relative_path": "by-sha256/ef3a1b665fd0771f933a18ed0b15899bc04ed939a3134b8efd1007dd965e54ef",
+          "sha256": "ef3a1b665fd0771f933a18ed0b15899bc04ed939a3134b8efd1007dd965e54ef",
+          "size_bytes": 10104
+        },
+        {
+          "artifact_id": "kimera@ce8c59b7b273ab5ac29db7e5572e1623760e19c7:src/frontend/feature-detector/anms/LICENSE",
+          "source_relative_path": "kimera/src/frontend/feature-detector/anms/LICENSE",
+          "local_relative_path": "by-sha256/5a9911ffe08f1f07b3a6df1d3920f71065f26e6f77cee4c4762a4e8468af63db",
+          "sha256": "5a9911ffe08f1f07b3a6df1d3920f71065f26e6f77cee4c4762a4e8468af63db",
+          "size_bytes": 1072
+        },
+        {
+          "artifact_id": "kimera@ce8c59b7b273ab5ac29db7e5572e1623760e19c7:tests/data/MicroEurocDataset/LICENSE.md",
+          "source_relative_path": "kimera/tests/data/MicroEurocDataset/LICENSE.md",
+          "local_relative_path": "by-sha256/e598606848584116871454e0f77cf4518f2d3d7dc8867f68e1f23ea00f3cfacf",
+          "sha256": "e598606848584116871454e0f77cf4518f2d3d7dc8867f68e1f23ea00f3cfacf",
+          "size_bytes": 106
+        },
+        {
+          "artifact_id": "kimera@ce8c59b7b273ab5ac29db7e5572e1623760e19c7:third_party/CMakeLists.txt",
+          "source_relative_path": "kimera/third_party/CMakeLists.txt",
+          "local_relative_path": "by-sha256/f88af47c952a3c12574be2d736851cf6d05e956e13fdc1870d9c0de2ea99e68a",
+          "sha256": "f88af47c952a3c12574be2d736851cf6d05e956e13fdc1870d9c0de2ea99e68a",
+          "size_bytes": 27
+        },
+        {
+          "artifact_id": "kimera@ce8c59b7b273ab5ac29db7e5572e1623760e19c7:third_party/triangle/include/triangle/triangle.h",
+          "source_relative_path": "kimera/third_party/triangle/include/triangle/triangle.h",
+          "local_relative_path": "by-sha256/bf4a4c37c6970e8f2be33eba8acb1206d7af64c383df8aa90313235548314a3d",
+          "sha256": "bf4a4c37c6970e8f2be33eba8acb1206d7af64c383df8aa90313235548314a3d",
+          "size_bytes": 21847
+        },
+        {
+          "artifact_id": "kimera@ce8c59b7b273ab5ac29db7e5572e1623760e19c7:third_party/triangle/src/triangle.c",
+          "source_relative_path": "kimera/third_party/triangle/src/triangle.c",
+          "local_relative_path": "by-sha256/8cbe9f07e5b271410ccc0955c81d977f4d8f360455fc3d8d2d04adefa48b2cbb",
+          "sha256": "8cbe9f07e5b271410ccc0955c81d977f4d8f360455fc3d8d2d04adefa48b2cbb",
+          "size_bytes": 390394
+        },
+        {
+          "artifact_id": "ros@9058506efd0b967ac894a717bdbe98df017637e5:.gitmodules",
+          "source_relative_path": "ros/.gitmodules",
+          "local_relative_path": "by-sha256/c3bee1ade29cecf0bdfd6222c0564f7dc7a78c646e670eb1bb86d3c16ca8424f",
+          "sha256": "c3bee1ade29cecf0bdfd6222c0564f7dc7a78c646e670eb1bb86d3c16ca8424f",
+          "size_bytes": 104
+        },
+        {
+          "artifact_id": "ros@9058506efd0b967ac894a717bdbe98df017637e5:LICENSE",
+          "source_relative_path": "ros/LICENSE",
+          "local_relative_path": "by-sha256/58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+          "sha256": "58d1e17ffe5109a7ae296caafcadfdbe6a7d176f0bc4ab01e12a689b0499d8bd",
+          "size_bytes": 11357
+        },
+        {
+          "artifact_id": "ros@9058506efd0b967ac894a717bdbe98df017637e5:README.md",
+          "source_relative_path": "ros/README.md",
+          "local_relative_path": "by-sha256/35ed7952153c9db3a6a8a20b2aafaebcc51369d26bbafe2f3a1a56aa70c658b8",
+          "sha256": "35ed7952153c9db3a6a8a20b2aafaebcc51369d26bbafe2f3a1a56aa70c658b8",
+          "size_bytes": 7633
+        },
+        {
+          "artifact_id": "ros@9058506efd0b967ac894a717bdbe98df017637e5:isaac_ros_cuvslam/CMakeLists.txt",
+          "source_relative_path": "ros/isaac_ros_cuvslam/CMakeLists.txt",
+          "local_relative_path": "by-sha256/49af2c7f19a30c2c946ab5f513de54e76ff0d9e24539e01176365ad27b4f5742",
+          "sha256": "49af2c7f19a30c2c946ab5f513de54e76ff0d9e24539e01176365ad27b4f5742",
+          "size_bytes": 6774
+        },
+        {
+          "artifact_id": "ros@9058506efd0b967ac894a717bdbe98df017637e5:isaac_ros_cuvslam/include/isaac_ros_cuvslam/visual_slam_node.hpp",
+          "source_relative_path": "ros/isaac_ros_cuvslam/include/isaac_ros_cuvslam/visual_slam_node.hpp",
+          "local_relative_path": "by-sha256/10784204b6970306385f0229999019268160569703cdfcd0a5da58fb4fe6b933",
+          "sha256": "10784204b6970306385f0229999019268160569703cdfcd0a5da58fb4fe6b933",
+          "size_bytes": 14127
+        },
+        {
+          "artifact_id": "ros@9058506efd0b967ac894a717bdbe98df017637e5:isaac_ros_cuvslam/package.xml",
+          "source_relative_path": "ros/isaac_ros_cuvslam/package.xml",
+          "local_relative_path": "by-sha256/04c6ce69809043d18bd65bd98145796711a99223e4a728726f246d1b5bab1eaa",
+          "sha256": "04c6ce69809043d18bd65bd98145796711a99223e4a728726f246d1b5bab1eaa",
+          "size_bytes": 2448
+        },
+        {
+          "artifact_id": "ros@9058506efd0b967ac894a717bdbe98df017637e5:isaac_ros_cuvslam/src/visual_slam_node.cpp",
+          "source_relative_path": "ros/isaac_ros_cuvslam/src/visual_slam_node.cpp",
+          "local_relative_path": "by-sha256/0ce7ca394ef758be13e75c32f39e40f9efcd757dcec4adec5cbcbee694acba3b",
+          "sha256": "0ce7ca394ef758be13e75c32f39e40f9efcd757dcec4adec5cbcbee694acba3b",
+          "size_bytes": 22614
+        },
+        {
+          "artifact_id": "ros_dependency@33da60662b27c0c5b63e0597bd778066af2731ed:LICENSE",
+          "source_relative_path": "ros_dependency/LICENSE",
+          "local_relative_path": "by-sha256/f369a8d255622b2ad0108b65dacb62b96c40a3a113f7893218436188bdc373fd",
+          "sha256": "f369a8d255622b2ad0108b65dacb62b96c40a3a113f7893218436188bdc373fd",
+          "size_bytes": 8178
+        }
+      ]
+    },
+    "status_axes": {
+      "hash_verification": {
+        "LOCALLY_COMPUTED_GIT_BLOB_VERIFIED": 44,
+        "NOT_VERIFIED": 2,
+        "UPSTREAM_REPORTED_NOT_LOCALLY_VERIFIED": 14
+      },
+      "hash_publication": {
+        "NOT_ESTABLISHED": 2,
+        "NO_PUBLISHED_SHA256_IN_REVIEWED_EVIDENCE": 44,
+        "OFFICIALLY_PUBLISHED": 14
+      },
+      "artifact_download": {
+        "DOWNLOADED_SMALL_TEXT": 44,
+        "NOT_DOWNLOADED": 16
+      },
+      "proven_absence_of_any_published_hash": 0,
+      "note": "No published SHA-256 in reviewed metadata is scoped; 2 unselected/undownloaded assets remain unknown, not proven unpublished."
+    },
+    "dependency_decisions_across_five_files": {
+      "provenance/third_party.csv": {
+        "cuvslam": "CONDITIONAL",
+        "ros": "CONDITIONAL",
+        "ros_dependency": "CONDITIONAL",
+        "euroc": "CONDITIONAL",
+        "depthai": "CONDITIONAL",
+        "ffs": "NO-GO",
+        "kimera": "CONDITIONAL"
+      },
+      "docs/upstream-method-matrix.md": {
+        "cuvslam": "CONDITIONAL",
+        "ros": "CONDITIONAL",
+        "euroc": "CONDITIONAL",
+        "depthai": "CONDITIONAL",
+        "ffs": "NO-GO",
+        "kimera": "CONDITIONAL",
+        "ros_dependency": "CONDITIONAL"
+      },
+      "docs/license-and-redistribution-review.md": {
+        "cuvslam": "CONDITIONAL",
+        "ros": "CONDITIONAL",
+        "euroc": "CONDITIONAL",
+        "depthai": "CONDITIONAL",
+        "ffs": "NO-GO",
+        "kimera": "CONDITIONAL",
+        "ros_dependency": "CONDITIONAL"
+      },
+      "docs/integration-decision.md": {
+        "cuvslam": "CONDITIONAL",
+        "ros": "CONDITIONAL",
+        "euroc": "CONDITIONAL",
+        "depthai": "CONDITIONAL",
+        "ffs": "NO-GO",
+        "kimera": "CONDITIONAL",
+        "ros_dependency": "CONDITIONAL"
+      },
+      "docs/handoffs/provenance-HANDOFF.md": {
+        "cuvslam": "CONDITIONAL",
+        "ros": "CONDITIONAL",
+        "euroc": "CONDITIONAL",
+        "depthai": "CONDITIONAL",
+        "ffs": "NO-GO",
+        "kimera": "CONDITIONAL",
+        "ros_dependency": "CONDITIONAL"
+      }
+    },
+    "local_markdown_links_checked": 20,
+    "markdown_whitespace": "PASS (direct byte/line checks; no diff exit-status normalization)",
+    "license_review_filename": {
+      "relative_path": "docs/license-and-redistribution-review.md",
+      "literal_backslash_present": false,
+      "exists": true
+    },
+    "exact_git_status": {
+      "command": "git status --short --untracked-files=all",
+      "exit_code": 0,
+      "stdout": "?? docs/handoffs/provenance-HANDOFF.md\n?? docs/integration-decision.md\n?? docs/license-and-redistribution-review.md\n?? docs/upstream-method-matrix.md\n?? provenance/audit-evidence.json\n?? provenance/third_party.csv\n?? provenance/verification-report.json\n?? provenance/verify_consistency.py\n",
+      "stderr": ""
+    },
+    "new_files_only": [
+      "docs/handoffs/provenance-HANDOFF.md",
+      "docs/integration-decision.md",
+      "docs/license-and-redistribution-review.md",
+      "docs/upstream-method-matrix.md",
+      "provenance/audit-evidence.json",
+      "provenance/third_party.csv",
+      "provenance/verification-report.json",
+      "provenance/verify_consistency.py"
+    ],
+    "tracked_application_and_index_changes": 0,
+    "source_bodies_in_persistent_evidence": 0,
+    "remaining_unknowns_preserved": [
+      "No full transitive-license clearance",
+      "No actual wheel, firmware, dataset or model payload inspected",
+      "No hardware/runtime/performance certification",
+      "No certification of pre-existing code authorship or historical experimental artifact licenses"
+    ]
+  },
+  "errors": [],
+  "downloads_performed": 0,
+  "prior_failure": {
+    "command": "git diff --check --no-index /dev/null docs/integration-decision.md",
+    "argv": [
+      "git",
+      "diff",
+      "--check",
+      "--no-index",
+      "/dev/null",
+      "docs/integration-decision.md"
+    ],
+    "exit_code": 1,
+    "stdout": "",
+    "stderr": "",
+    "failed_assertion": null,
+    "historical_context": "This was the trailing command after a Python consistency check printed result PASS. The shell/tool inherited the trailing git command status 1.",
+    "reproduction": "Reproduced before repair: exit 1, stdout empty, stderr empty.",
+    "cause": "git diff --no-index compares the nonempty document with /dev/null and uses diff exit status; a difference produces 1. No assertion traceback or whitespace diagnostic was emitted.",
+    "repair": "Remove diff-as-pass/fail ambiguity: final verifier checks all delivered Markdown bytes for whitespace directly and itself exits 0 only after every consistency check succeeds."
+  },
+  "repair_failures": [
+    {
+      "command": "python3 provenance/verify_consistency.py --cache-root /tmp/gps-denied-provenance-audit --report provenance/verification-report.json",
+      "exit_code": 1,
+      "failed_assertion": "Broken local Markdown link docs/upstream-method-matrix.md: ../provenance/verification-report.json",
+      "stdout": "",
+      "stderr": "{\"status\": \"BLOCKED\", \"exit_code\": 1, \"failed_assertion\": \"Broken local Markdown link docs/upstream-method-matrix.md: ../provenance/verification-report.json\", \"command\": \"python3 provenance/verify_consistency.py --cache-root /tmp/gps-denied-provenance-audit --report provenance/verification-report.json\", \"downloads_performed\": 0}\n",
+      "cause": "First-run output bootstrap: report path checked before it had been materialized.",
+      "repair": "Materialize the designated generated report path before validating Markdown links; do not read/trust previous report contents."
+    }
+  ],
+  "input_sha256": {
+    "docs/handoffs/provenance-HANDOFF.md": "3458a412406a58478c35e2067fa0e907f8bfc2a47ca59ac45da7f0059c1b3091",
+    "docs/integration-decision.md": "62189c582c7abedd452f4d9f3e6dac72e2327384238be938016be78a16207088",
+    "docs/license-and-redistribution-review.md": "6facf7076705a44dbec1f89dd8ca1daa0ba78f3efe5d91102d8bb927670052eb",
+    "docs/upstream-method-matrix.md": "9a48a9321be5c2f111c636bb3220c130e2c519511159914facc9245d0e91d964",
+    "provenance/audit-evidence.json": "07551e7d9c4625b259d6fb9320c5c49eea592d8d60a99761373079d40e7da9cc",
+    "provenance/third_party.csv": "0a4e3423a6b514fc73403745e20cedfbdc24d6f50e4fb72413d167a99f8d4c6c",
+    "provenance/verify_consistency.py": "43994de47a326d9ef5110e0043cdfad87bbd4eb7d51853aa9f969dd898ff5f40"
+  },
+  "cache_root": "/tmp/gps-denied-provenance-audit",
+  "command": "python3 provenance/verify_consistency.py --cache-root /tmp/gps-denied-provenance-audit --report provenance/verification-report.json",
+  "exit_code": 0
+}

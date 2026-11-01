@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=75", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dronehacks-autonomy-2026"
+version = "0.1.0"
+description = "Competition-focused perception, safety evidence, benchmarking and forensics for DroneHacks 2026"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [{name = "Shiyue Wang"}]
+dependencies = ["numpy>=1.24,<3"]
+
+[project.optional-dependencies]
+vision = ["opencv-python>=4.8,<6"]
+forensics = ["pyulog==1.2.2"]
+dev = ["pytest>=8.4,<9", "ruff==0.14.3"]
+
+[project.scripts]
+dronehacks-course-replay = "aegisland.course_replay:main"
+dronehacks-forensics = "aegisland.forensics.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+

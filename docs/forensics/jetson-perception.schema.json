@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Jetson post-flight perception record v1",
+  "description": "One UTF-8 JSON object per line. Reject duplicate keys and non-finite values before validation. Analysis only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "clock", "timestamp", "frame_id", "depth_coverage",
+    "invalid_depth_ratio", "line_confidence", "obstacle_distance_m", "mode", "decision",
+    "latency_ms", "dropped_frame", "source_hashes", "executed"
+  ],
+  "properties": {
+    "schema_version": {"type": "integer", "const": 1},
+    "clock": {"const": "jetson_monotonic_ns"},
+    "timestamp": {"type": "integer", "minimum": 0, "maximum": 9223372036854775807},
+    "frame_id": {"type": "integer", "minimum": 0, "maximum": 9223372036854775807},
+    "depth_coverage": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "invalid_depth_ratio": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "line_confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "obstacle_distance_m": {"type": ["number", "null"], "minimum": 0, "maximum": 1000000000000},
+    "mode": {"type": "string", "minLength": 1, "maxLength": 256},
+    "decision": {"type": "string", "minLength": 1, "maxLength": 256},
+    "latency_ms": {"type": ["number", "null"], "minimum": 0, "maximum": 1000000000000},
+    "dropped_frame": {"type": "boolean"},
+    "source_hashes": {
+      "type": "object", "minProperties": 1,
+      "propertyNames": {"minLength": 1},
+      "additionalProperties": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    },
+    "executed": {"type": "boolean", "const": false},
+    "tracking_valid": {"type": "boolean"}
+  }
+}
