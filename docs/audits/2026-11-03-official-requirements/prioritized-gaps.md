@@ -14,7 +14,7 @@ Additional release/reproducibility gaps: eight broken Markdown references; prove
 
 ## Observations versus interpretation
 
-[Expanded probes](evidence/safety-probe-expanded.stdout.txt) are direct pure-object observations. They do not instantiate a publisher or transmit anything. Exit zero means the observation script completed, not that the objects are safe. Integer `0` is accepted as executed, which violates strict boolean intent without representing actual execution. Directional unknown-depth handling and zero-confidence acceptance need a defined contract; they are not proof that every stationary or reverse motion must always be rejected. The current frame-independent `vx>0` check is insufficient for general directions/frames.
+[Expanded probes](portable/evidence/safety-probe-expanded.stdout.txt) are direct pure-object observations. They do not instantiate a publisher or transmit anything. Exit zero means the observation script completed, not that the objects are safe. Integer `0` is accepted as executed, which violates strict boolean intent without representing actual execution. Directional unknown-depth handling and zero-confidence acceptance need a defined contract; they are not proof that every stationary or reverse motion must always be rejected. The current frame-independent `vx>0` check is insufficient for general directions/frames.
 
 Inference: connecting these contracts unchanged to a permissive publisher would create a hazardous integration path. Current source has no such publisher. All observed course/forensics output authority remains NONE and executed false. Current tests passing therefore coexists with these negative cases.
 

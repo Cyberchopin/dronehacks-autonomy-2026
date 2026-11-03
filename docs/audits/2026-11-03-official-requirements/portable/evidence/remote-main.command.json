@@ -1,0 +1,25 @@
+{
+  "command": [
+    "git",
+    "ls-remote",
+    "origin",
+    "refs/heads/main"
+  ],
+  "cwd": "<AUDIT_CHECKOUT>",
+  "started_utc": "2026-11-03T08:25:39.606364+00:00",
+  "duration_s": 0.02065300600008868,
+  "timeout_s": 30.0,
+  "exit_code": 128,
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "head": "cf4dfae5cae8e4ce63b94bd77a715013ed5c141a",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "<AUDIT_CHECKOUT>/src",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_sha256": "d3fde702b8f17c904d59fd1e9e782299744cbbcc4707640ebb1edc49d359203b"
+}

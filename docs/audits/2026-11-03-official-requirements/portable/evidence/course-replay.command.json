@@ -1,0 +1,27 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "aegisland.course_replay",
+    "--adversarial",
+    "--output",
+    "docs/audits/2026-11-03-official-requirements/evidence/course-replay"
+  ],
+  "cwd": "<AUDIT_CHECKOUT>",
+  "started_utc": "2026-11-03T08:24:50.967362+00:00",
+  "duration_s": 0.31574958700002753,
+  "timeout_s": 90.0,
+  "exit_code": 0,
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "head": "cf4dfae5cae8e4ce63b94bd77a715013ed5c141a",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "<AUDIT_CHECKOUT>/src",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "stdout_sha256": "0a4056b1b89c204098d98b54e1b826486d82fc127b6e3e74bf20f66b056f057a",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -2,7 +2,7 @@
 
 Audit date: 2026-11-03. Source checkout: `<original checkout outside this repository>`, branch `main`, clean, HEAD `cf4dfae5cae8e4ce63b94bd77a715013ed5c141a`, origin `https://github.com/Cyberchopin/dronehacks-autonomy-2026.git`.
 
-Writable audit clone: `.`, branch `audit/official-requirements-2026-11-03`, same HEAD and origin. Created with `git clone --no-hardlinks` from the clean same-repository source because the mount is outside writable roots. Original checkout preserved. No applicable AGENTS.md or `.codegraph/` was present. This new clone is isolated from existing agent worktrees. Final dirtiness consists solely of this untracked audit directory; environment/cache files are ignored. Nothing committed or pushed. `git ls-remote` failed DNS resolution, exit 128; `origin/main` is a copied local ref, not freshly verified remote main.
+Writable audit clone: `.`, branch `audit/official-requirements-2026-11-03`, same HEAD and origin. Created with `git clone --no-hardlinks` from the clean same-repository source because the mount is outside writable roots. Original checkout preserved. No applicable AGENTS.md or `.codegraph/` was present. This new clone is isolated from existing agent worktrees. At audit time, dirtiness consisted solely of the untracked audit directory; environment/cache files were ignored. Nothing had then been committed or pushed. `git ls-remote` failed DNS resolution, exit 128; `origin/main` is a copied local ref, not freshly verified remote main.
 
 ## Observed architecture and actual paths
 
@@ -33,7 +33,7 @@ Single-pass desktop observe latency: median 4.538 ms, p95 7.498 ms, max 12.895 m
 
 Environment: Linux WSL2 x86_64, Python 3.12.3, NumPy 2.5.4, OpenCV 5.0.0, pytest 8.4.2, PyULog 1.2.2, Ruff 0.14.3. Dependencies installed only into this clone's ignored `.venv` with `python3 -m venv .venv` and `.venv/bin/python -m pip install --retries 0 --timeout 20 -e '.[dev,vision,forensics]'` (both exit 0). Windows `.deps` contains Windows binary extensions and was not reused. No dependency pin changed. Installation output was observed in the tool transcript; it was not captured as a timed audit run. Test/replay commands below have timed raw stdout/stderr and metadata.
 
-All checks use [capture.py](capture.py): `python3 docs/audits/2026-11-03-official-requirements/capture.py LABEL TIMEOUT COMMAND...`. Metadata records exact argv, timeout, duration, HEAD, environment overrides and raw-output hashes. `PYTHONPATH=src`, bytecode disabled, external pytest plugin autoload disabled, OMP/OpenBLAS threads set to one. Course replay itself sets OpenCV threads to one. Raw artifacts live in `evidence/`.
+All checks use [capture.py](capture.py): `python3 docs/audits/2026-11-03-official-requirements/capture.py LABEL TIMEOUT COMMAND...`. Metadata records exact argv, timeout, duration, HEAD, environment overrides and raw-output hashes. `PYTHONPATH=src`, bytecode disabled, external pytest plugin autoload disabled, OMP/OpenBLAS threads set to one. Course replay itself sets OpenCV threads to one. The [portable evidence](portable/README.md) contains labeled derivatives under `portable/evidence/`; raw originals remain local. Commands are historical, and should not overwrite the preserved copies.
 
 | Label | Command after capture wrapper | Timeout | Exit / result |
 | --- | --- | --- | --- |
@@ -47,7 +47,7 @@ All checks use [capture.py](capture.py): `python3 docs/audits/2026-11-03-officia
 | static-inventory-v2 | `.venv/bin/python docs/audits/2026-11-03-official-requirements/static_inventory.py` | 30 s | 0; hashes, symbols, broken links, package metadata |
 | remote-main | `git ls-remote origin refs/heads/main` | 30 s | 128; DNS failure |
 
-Initial `static-inventory` failed (exit 1) because the audit helper assumed setuptools remained installed after isolated build. The helper now records missing optional metadata; both the failure and v2 output are preserved. Runtime and tests were not edited. The original safety probe output is also retained alongside the expanded sensor-health probe. No broad repeated suite was run.
+Initial `static-inventory` failed (exit 1) because the audit helper assumed setuptools remained installed after isolated build. The helper now records missing optional metadata; both the failure and v2 output are preserved. Runtime and tests were not edited. The original safety probe output remains local; the expanded sensor-health probe is included as a derivative. No broad repeated suite was run.
 
 ## Negative observations and inferences
 

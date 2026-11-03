@@ -1,0 +1,1213 @@
+{
+  "authority_change": "NONE",
+  "capabilities": {
+    "metric_vio_slam": "not_provided",
+    "return_navigation": "unimplemented",
+    "window_navigation": "unimplemented"
+  },
+  "command_executed": false,
+  "configuration": {
+    "sha256": "b6e9f86fa65a4088872b32a555e9a5c413b4ac80bde507d1b394da48f7dc7cd1",
+    "values": {
+      "candidate_limit": 8,
+      "candidate_nms_iou": 0.6,
+      "canny_high": 120.0,
+      "canny_low": 40.0,
+      "clahe_clip_limit": 2.2,
+      "clahe_tiles": 8,
+      "clearance_margin_m": 0.15,
+      "contour_epsilon_fraction": 0.025,
+      "contrast_delta": 18.0,
+      "contrast_full_scale": 80.0,
+      "corridor_probe_m": 2.0,
+      "depth": {
+        "horizontal_fov_deg": null,
+        "max_age_ms": 200.0,
+        "max_range_m": 10.0,
+        "min_range_m": 0.2,
+        "min_valid_fraction": 0.2,
+        "min_valid_pixels": 50,
+        "percentile": 5.0,
+        "sectors": 7,
+        "vertical_band_deg": 15.0
+      },
+      "depth_sync_max_ms": 25.0,
+      "envelope_width_m": 0.35,
+      "landing_confidence_min": 0.65,
+      "landing_max_z_m": 4.0,
+      "landing_min_z_m": 0.4,
+      "line_bottom_margin_fraction": 0.08,
+      "line_competitor_ratio": 0.85,
+      "line_confidence_min": 0.55,
+      "line_fit_width_multiplier": 1.8,
+      "line_max_above_roi_fraction": 0.5,
+      "line_max_area_fraction": 0.18,
+      "line_max_fit_error_fraction": 0.035,
+      "line_max_fit_rms_fraction": 0.012,
+      "line_max_split_row_fraction": 0.1,
+      "line_max_wide_row_fraction": 0.25,
+      "line_max_width_cv": 0.4,
+      "line_max_width_fraction": 0.2,
+      "line_min_area_fraction": 0.001,
+      "line_min_geometry_rows": 8,
+      "line_min_row_coverage": 0.7,
+      "line_polarity": "bright",
+      "line_roi_top": 0.35,
+      "line_samples": 12,
+      "line_side_margin_fraction": 0.01,
+      "local_depth_min_fraction": 0.9,
+      "local_depth_min_pixels": 50,
+      "low_light_dark_fraction": 0.75,
+      "low_light_dark_pixel": 12,
+      "low_light_mean": 40.0,
+      "opening_max_area_fraction": 0.8,
+      "opening_max_aspect": 2.5,
+      "opening_min_area_fraction": 0.025,
+      "opening_min_aspect": 0.4,
+      "opening_min_rectangularity": 0.85,
+      "plane_max_residual_m": 0.04,
+      "plane_max_samples": 2000,
+      "plane_max_tilt_deg": 15.0,
+      "provenance": "synthetic-v2-adversarial; engineering heuristics; no field calibration",
+      "recovery_min_contrast_gain": 5.0,
+      "recovery_min_line_gain": 0.05,
+      "rgb_conflict_depth_delta_m": 0.08,
+      "rgb_conflict_min_area_fraction": 0.02,
+      "rgb_conflict_min_extent_fraction": 0.15,
+      "rgb_conflict_min_fill_fraction": 0.65,
+      "ring_border_fraction": 0.01,
+      "ring_max_area_fraction": 0.65,
+      "ring_max_center_offset": 0.1,
+      "ring_max_hole_ratio": 0.9,
+      "ring_min_area_fraction": 0.015,
+      "ring_min_axis_ratio": 0.65,
+      "ring_min_circularity": 0.84,
+      "ring_min_hole_ratio": 0.3,
+      "roi_inset_fraction": 0.12,
+      "schema_version": 2
+    }
+  },
+  "control_output": "DISABLED",
+  "environment": {
+    "dirty_worktree": true,
+    "git_head": "cf4dfae5cae8e4ce63b94bd77a715013ed5c141a",
+    "machine": "x86_64",
+    "numpy": "2.5.4",
+    "opencv": "5.0.0",
+    "opencv_threads": 1,
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "source_sha256": {
+      "course_config.py": "006fdb64eafde545690fd9bc3b4eb9e3161392824c68387b5976c58eeaa953d4",
+      "course_perception.py": "38dd9ff8736d47e1b1d19de74732d152e45a550f0863286b54774c4c732ebe68",
+      "course_replay.py": "667338e3213952510b723f3ab419e2939bde745eb1a01756f5c4975c7e6e8afb",
+      "course_synthetic.py": "825aa61224f3164e123d537d64ab9372a74740dab39b5e61373b652049dd717f",
+      "depth_sectors.py": "1a7672003c775a53de79672e6339e0be59f235e8c1275027433e968b8de06fe0",
+      "domain.py": "8dc2e992a15bb17d47d1934dcef8cf4537642038e884ad754810a0993faef335",
+      "perception.py": "cc2aa53c214d4e80859eb5601de13b028fa66a35f3f636ebd2b2f107491506f3",
+      "stage_timing.py": "43407040ffb379caca99f4112145356ff1067bbf9a44fc2411486c3379a7230a",
+      "trace.py": "327ac21885105e76658984008a10657ee44c2d5589873e72c05487cc57efd4f7"
+    }
+  },
+  "executed": false,
+  "latency_ms": {
+    "max": 12.894643999970867,
+    "min": 2.0958569999720567,
+    "p50": 4.538411999988057,
+    "p95": 7.497746250038517,
+    "scope": "observe: validation through evidence construction; includes input hashing and stage instrumentation; excludes disk I/O; single pass including cold first sample; CPU only"
+  },
+  "limitations": [
+    "synthetic results are not field detection accuracy",
+    "no hardware, Orin, flight or full-route validation",
+    "no semantic exit/pad identity or temporal obstacle tracking",
+    "clearance is projected at the configured camera-z probe plane; not a physical gate width or swept 3-D vehicle volume",
+    "landing suitability covers observed geometry/depth only; motion, gravity alignment and full 3-D vehicle footprint remain unassessed",
+    "window and return stretch goals are not implemented"
+  ],
+  "sample_count": 36,
+  "samples": [
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.9999999999999898,
+      "line_detected": true,
+      "line_geometry_consistent": true,
+      "line_rejection_reasons": [],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 12.894643999970867,
+      "source": "synthetic:line",
+      "state": "line_supported",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.9999999999999927,
+      "line_detected": true,
+      "line_geometry_consistent": true,
+      "line_rejection_reasons": [],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 5.148216000065986,
+      "source": "synthetic:maze",
+      "state": "line_supported",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 1,
+      "opening_clearance_supported": true,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 4.9668609999571345,
+      "source": "synthetic:opening",
+      "state": "opening_candidate",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 7.889736842397377,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring",
+        "low_light_raw_evidence"
+      ],
+      "line_confidence": 0.560467246936454,
+      "line_detected": true,
+      "line_geometry_consistent": true,
+      "line_rejection_reasons": [],
+      "low_light": true,
+      "low_light_recovered": true,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 9.132720000025074,
+      "source": "synthetic:dim_recoverable",
+      "state": "degraded",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.4046984795807863,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring",
+        "low_light_raw_evidence"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "insufficient_line_support"
+      ],
+      "low_light": true,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 4.5343239999056095,
+      "source": "synthetic:dim_line",
+      "state": "degraded",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [
+        "depth_sector_degraded"
+      ],
+      "depth_valid": false,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "depth_sector_degraded",
+        "local_depth_insufficient"
+      ],
+      "landing_rejection_reasons": [
+        "no_outer_ring",
+        "low_light_raw_evidence"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "insufficient_line_support"
+      ],
+      "low_light": true,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 3.301695999994081,
+      "source": "synthetic:blackout",
+      "state": "degraded",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 1,
+      "opening_clearance_supported": true,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 5.10298500000772,
+      "source": "synthetic:chicane",
+      "state": "opening_candidate",
+      "width_at_probe_m": 1.0625
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "insufficient_observed_clearance"
+      ],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 1,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 5.190792000007605,
+      "source": "synthetic:narrow_gap",
+      "state": "opening_candidate",
+      "width_at_probe_m": 0.2857142857142857
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "insufficient_observed_clearance"
+      ],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 1,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 5.1296059999685895,
+      "source": "synthetic:blocked_opening",
+      "state": "opening_candidate",
+      "width_at_probe_m": 0.0
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "local_depth_insufficient"
+      ],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 1,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 3.786452999975154,
+      "source": "synthetic:unknown_opening",
+      "state": "opening_candidate",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": true,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "camera_view_not_forward"
+      ],
+      "landing_rejection_reasons": [],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.8922850015897371,
+      "pad_detected": true,
+      "processing_ms": 4.601469000022007,
+      "source": "synthetic:pad",
+      "state": "pad_candidate",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "camera_view_not_forward"
+      ],
+      "landing_rejection_reasons": [
+        "landing_footprint_too_small",
+        "landing_surface_not_planar"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.8922850015897371,
+      "pad_detected": true,
+      "processing_ms": 4.671069999972133,
+      "source": "synthetic:intruded_pad",
+      "state": "pad_candidate",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "camera_view_not_forward"
+      ],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 3.735611000024619,
+      "source": "synthetic:solid_disk",
+      "state": "unobservable",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "camera_view_not_forward"
+      ],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 3.7599409999984346,
+      "source": "synthetic:ellipse",
+      "state": "unobservable",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": true,
+      "line_rejection_reasons": [
+        "competing_lines"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 5.884696999942207,
+      "source": "synthetic:parallel_lines",
+      "state": "unobservable",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 4.235334999975748,
+      "source": "synthetic:branch",
+      "state": "unobservable",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 4.212222999967707,
+      "source": "synthetic:broken_line",
+      "state": "unobservable",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "insufficient_line_support"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 3.932211999995161,
+      "source": "synthetic:blank",
+      "state": "unobservable",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "camera_view_not_forward"
+      ],
+      "landing_rejection_reasons": [
+        "landing_footprint_too_small",
+        "landing_surface_tilted"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.8922850015897371,
+      "pad_detected": true,
+      "processing_ms": 4.354493000050752,
+      "source": "synthetic:tilted_pad",
+      "state": "pad_candidate",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "camera_view_not_forward"
+      ],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 3.6095230000228185,
+      "source": "synthetic:clipped_pad",
+      "state": "unobservable",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": true,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "camera_view_not_forward"
+      ],
+      "landing_rejection_reasons": [],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "insufficient_line_support"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.8922850015897371,
+      "pad_detected": true,
+      "processing_ms": 4.191017999914948,
+      "source": "synthetic:dark_pad",
+      "state": "pad_candidate",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "camera_view_not_forward"
+      ],
+      "landing_rejection_reasons": [
+        "competing_outer_rings"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.8922850015897371,
+      "pad_detected": true,
+      "processing_ms": 4.708220999987134,
+      "source": "synthetic:two_pads",
+      "state": "pad_candidate",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [
+        "depth_stale_or_future",
+        "image_depth_unsynchronized"
+      ],
+      "depth_valid": false,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "depth_stale_or_future",
+        "image_depth_unsynchronized"
+      ],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.9999999999999898,
+      "line_detected": true,
+      "line_geometry_consistent": true,
+      "line_rejection_reasons": [],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 4.542500000070504,
+      "source": "synthetic:stale_depth",
+      "state": "degraded",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [
+        "image_depth_unsynchronized"
+      ],
+      "depth_valid": false,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "image_depth_unsynchronized"
+      ],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.9999999999999898,
+      "line_detected": true,
+      "line_geometry_consistent": true,
+      "line_rejection_reasons": [],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 4.350375000058193,
+      "source": "synthetic:unsynchronized_depth",
+      "state": "degraded",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [
+        "depth_missing"
+      ],
+      "depth_valid": false,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "depth_missing"
+      ],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.9999999999999898,
+      "line_detected": true,
+      "line_geometry_consistent": true,
+      "line_rejection_reasons": [],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 2.0958569999720567,
+      "source": "synthetic:missing_depth",
+      "state": "degraded",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [
+        "depth_sector_degraded"
+      ],
+      "depth_valid": false,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "depth_sector_degraded",
+        "local_depth_insufficient",
+        "local_depth_blind_zone"
+      ],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.9999999999999898,
+      "line_detected": true,
+      "line_geometry_consistent": true,
+      "line_rejection_reasons": [],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 3.589452000028359,
+      "source": "synthetic:blind_zone",
+      "state": "degraded",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "line_shape_inconsistent"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 5.261346999986927,
+      "source": "synthetic:adversarial:partial_ring",
+      "state": "unobservable",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "insufficient_line_support"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 4.155876000027092,
+      "source": "synthetic:adversarial:curved_shadow",
+      "state": "unobservable",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "line_cropped_at_side",
+        "line_wall_edge_ambiguous"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 5.035894999991797,
+      "source": "synthetic:adversarial:wall_edge",
+      "state": "unobservable",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "line_wall_edge_ambiguous"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 5.242715000008502,
+      "source": "synthetic:adversarial:wall_highlight",
+      "state": "unobservable",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 4.251899999985653,
+      "source": "synthetic:adversarial:short_fragment",
+      "state": "unobservable",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.9512159870892476,
+      "line_detected": true,
+      "line_geometry_consistent": true,
+      "line_rejection_reasons": [],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 5.049144999929922,
+      "source": "synthetic:adversarial:slanted_line",
+      "state": "line_supported",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "rgb_depth_conflict_suspected"
+      ],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 2,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 6.952755000042998,
+      "source": "synthetic:adversarial:rgb_blocker_depth_far",
+      "state": "opening_candidate",
+      "width_at_probe_m": null
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": false,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [
+        "insufficient_observed_clearance"
+      ],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "branched_or_insufficient_geometry"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 1,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 5.088961000069503,
+      "source": "synthetic:adversarial:rgb_opening_depth_wall",
+      "state": "opening_candidate",
+      "width_at_probe_m": 0.0
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "insufficient_line_support"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 3.96736699997291,
+      "source": "synthetic:adversarial:outside_roi_obstacle",
+      "state": "unobservable",
+      "width_at_probe_m": 2.1785714285714284
+    },
+    {
+      "clearance_scope": "local_camera_z_probe_plane",
+      "clearance_supported": true,
+      "contrast_gain": 0.0,
+      "depth_rejection_reasons": [],
+      "depth_valid": true,
+      "descent_geometry_suitable": false,
+      "full_3d_traversability": "UNKNOWN",
+      "gap_rejection_reasons": [],
+      "landing_rejection_reasons": [
+        "no_outer_ring"
+      ],
+      "line_confidence": 0.0,
+      "line_detected": false,
+      "line_geometry_consistent": false,
+      "line_rejection_reasons": [
+        "insufficient_line_support"
+      ],
+      "low_light": false,
+      "low_light_recovered": false,
+      "opening_candidates": 0,
+      "opening_clearance_supported": false,
+      "pad_confidence": 0.0,
+      "pad_detected": false,
+      "processing_ms": 4.119779000006929,
+      "source": "synthetic:adversarial:beyond_probe_obstacle",
+      "state": "unobservable",
+      "width_at_probe_m": 2.1785714285714284
+    }
+  ],
+  "schema": "aegisland.course-report.v2"
+}
