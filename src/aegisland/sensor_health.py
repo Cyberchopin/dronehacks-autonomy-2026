@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from enum import StrEnum
+import math
 
 
 class SensorHealthState(StrEnum):
@@ -72,12 +73,42 @@ class SensorHealthMonitor:
         confidence: float,
         valid: bool,
     ) -> SensorHealthResult:
-        confidence = self._clamp(confidence)
-
         state = self._states.setdefault(
             source,
             _SensorState(),
         )
+
+        # Malformed readings fail closed without interrupting the supervisor.
+        if type(valid) is not bool:
+            state.state = SensorHealthState.FAILED
+            state.recovery_streak = 0
+            return self._result(
+                source,
+                state,
+                0.0,
+                valid=False,
+                effective_confidence=0.0,
+                reason="Invalid sensor validity flag; expected a bool.",
+            )
+
+        try:
+            confidence = float(confidence)
+            finite = math.isfinite(confidence)
+        except (TypeError, ValueError, OverflowError):
+            finite = False
+        if not finite:
+            state.state = SensorHealthState.FAILED
+            state.recovery_streak = 0
+            return self._result(
+                source,
+                state,
+                0.0,
+                valid=False,
+                effective_confidence=0.0,
+                reason="Invalid or non-finite sensor confidence.",
+            )
+
+        confidence = self._clamp(confidence)
 
         # Hard invalidity or critically poor confidence fails immediately.
         if not valid:
