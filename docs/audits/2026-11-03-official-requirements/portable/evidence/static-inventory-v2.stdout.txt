@@ -1,0 +1,1226 @@
+{
+  "root": "<AUDIT_CHECKOUT>",
+  "branch": "audit/official-requirements-2026-11-03",
+  "head": "cf4dfae5cae8e4ce63b94bd77a715013ed5c141a",
+  "remote": "origin\thttps://github.com/Cyberchopin/dronehacks-autonomy-2026.git (fetch)\norigin\thttps://github.com/Cyberchopin/dronehacks-autonomy-2026.git (push)",
+  "status": "## audit/official-requirements-2026-11-03\n?? docs/audits/",
+  "tracked_count": 77,
+  "codegraph_present": false,
+  "agent_files": [],
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "packages": {
+    "numpy": "2.5.4",
+    "opencv-python": "5.0.0.93",
+    "pyulog": "1.2.2",
+    "pytest": "8.4.2",
+    "ruff": "0.14.3",
+    "setuptools": "NOT_INSTALLED (build isolation may provide it during installation)"
+  },
+  "tracked_sha256": {
+    ".gitattributes": "eb7990f26de5e0127cabb1b40a1c24da2d7da46cf971ab79e85fb366ba8b630f",
+    ".github/workflows/ci.yml": "13c9d696568feb3fc8ee5faef1049568ff76edf1137c9cce25eb9d6ff7fc9a92",
+    ".gitignore": "710f9498d09bc5005b2f290b346c92432ae22386c01b80b23c2777858a8da743",
+    "README.md": "d3464159e0bff442fd8fb1e1435b5fd18a83af8af20bb25638202f151a78ec13",
+    "docs/ARCHITECTURE.md": "a1f59da0709361ae9c03a6ef7c75dd6381ca1cd850ef682665484cf5b6ac1c8b",
+    "docs/CLAIMS.md": "17ca47236afe9bcc3e14ec9d18d05b37891bdb1a850f3e9a077b4e9f5a76849d",
+    "docs/CURRENT_STATUS.md": "ab90ae41d440e72d68ce0a9d514d67acdb4961ca84c4d519fe8097f0e46a8d4a",
+    "docs/MIGRATION_MANIFEST.md": "ab578bf141960a91851b7238c5c007047335b62a8e9e4219424a8c86fb9057c6",
+    "docs/STARTER_INTEGRATION.md": "677a3b7b9140a781e85ecb357d84780c601500b827f99b497284f17d791253ce",
+    "docs/competition-data-boundary.md": "55b33841f47cb7edcd025765d7c589db6904f528c8351e1ff5e135c6f12b521e",
+    "docs/course-perception-design.md": "c65022c46f354dd51352a61212b83f7cdd653d8656ebadfb27a1f98e8acac8b2",
+    "docs/dronehacks-benchmark-contract.md": "be1be729878a36125a75491a14ae97a3c1a77006cc4786133c4bf0f3056f3bb3",
+    "docs/forensics/README.md": "4d5e855053893f3c6ffaf6583fe77259955a986e1affdd29d7bda7a29bebafad",
+    "docs/forensics/integration-replay.md": "154d89671046d698e1465ec3655ef6bdb96bfb8e99e6b3ff81aa86235c8a0afa",
+    "docs/forensics/jetson-perception.schema.json": "32e284f4af1a749ae2455fa7c6d104274121baedfbc8844f38cbe1152eae85f7",
+    "docs/integration-decision.md": "62189c582c7abedd452f4d9f3e6dac72e2327384238be938016be78a16207088",
+    "docs/license-and-redistribution-review.md": "6facf7076705a44dbec1f89dd8ca1daa0ba78f3efe5d91102d8bb927670052eb",
+    "docs/upstream-method-matrix.md": "9a48a9321be5c2f111c636bb3220c130e2c519511159914facc9245d0e91d964",
+    "integration/starter_adapter/README.md": "726a014943839d362f58c5ebcbc32543acadcd674cebd4df2470b4f042f128c7",
+    "provenance/third_party.csv": "0a4e3423a6b514fc73403745e20cedfbdc24d6f50e4fb72413d167a99f8d4c6c",
+    "provenance/verification-report.json": "48f74c2b2aa66e69a4ce8ce562080a24b18d7f65dae94f5b491aa820beaaeb74",
+    "provenance/verify_consistency.py": "43994de47a326d9ef5110e0043cdfad87bbd4eb7d51853aa9f969dd898ff5f40",
+    "pyproject.toml": "2881679e6ddcf170bda67f4d08197c67f5cb6bb1c5ee31fec3bd16818bda7f16",
+    "requirements-forensics.txt": "c404abfd8ee0ef738151770db2cc4a983cfff25c53096fffa3c11752c24c9d28",
+    "src/aegisland/__init__.py": "93047b85d9c0890406d022b6d13ab1cf0c7124b89bf8af02e3d9e8eec8bd7292",
+    "src/aegisland/benchmark_adapters.py": "128b7d273e580851e0b3005004c9441188480f297e23a127045d0c91cfc0460d",
+    "src/aegisland/benchmark_contract.py": "5c62743c1c102d65159c2b0873fe88fe14bf4bd2911cd4cc4f3d76a998c36b43",
+    "src/aegisland/benchmark_harness.py": "790168ca0aec1742336f9858fd6e3a43a638cb19bd8a691321b1bfbfbf5a7621",
+    "src/aegisland/competition_contract.py": "1400e69a3183f8d98b50db3cfff137f25bc416608f42236879fdfcac6324469e",
+    "src/aegisland/course_config.py": "006fdb64eafde545690fd9bc3b4eb9e3161392824c68387b5976c58eeaa953d4",
+    "src/aegisland/course_perception.py": "38dd9ff8736d47e1b1d19de74732d152e45a550f0863286b54774c4c732ebe68",
+    "src/aegisland/course_replay.py": "667338e3213952510b723f3ab419e2939bde745eb1a01756f5c4975c7e6e8afb",
+    "src/aegisland/course_synthetic.py": "825aa61224f3164e123d537d64ab9372a74740dab39b5e61373b652049dd717f",
+    "src/aegisland/depth_sectors.py": "1a7672003c775a53de79672e6339e0be59f235e8c1275027433e968b8de06fe0",
+    "src/aegisland/domain.py": "8dc2e992a15bb17d47d1934dcef8cf4537642038e884ad754810a0993faef335",
+    "src/aegisland/forensics/__init__.py": "ee39bbcb5034bf9690a75a22b2cf7ca4a283fae4e01d3ffc783ada4dfdfcbd55",
+    "src/aegisland/forensics/__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+    "src/aegisland/forensics/alignment.py": "d3bae98b1646dc57f5331f684b7b8ac572e0ebb2f8a85c07bc8c0d9ea7f0bb35",
+    "src/aegisland/forensics/analysis.py": "34fc80d09dbfbdeff3f81d8a7417dd7e55fd65dd8695635d5ce17143de617d04",
+    "src/aegisland/forensics/cli.py": "372a85d10081e3b0f44102784a607a148182fe33b2a7cccf3844a575a1f1a067",
+    "src/aegisland/forensics/fixtures.py": "6bccb57b2f1f0436d29b6378866453def7399276a0a7a729eeed4df28a4b1694",
+    "src/aegisland/forensics/ingest.py": "5c3de090e2aac35b25d451e2f235d662d752d117ce219e9ff98638e097d2d26c",
+    "src/aegisland/forensics/integration.py": "d9d7dc7249c74e2d6319915b45254308c3e7a60d217a4dfb04775f4cab60f6b9",
+    "src/aegisland/forensics/integration_fixtures.py": "82a250d8dc6199653324129cfdf5cee865e7899e9ac7246c40683b51fd9b054b",
+    "src/aegisland/forensics/model.py": "680b3acb3053b5681206c44e6ef244b1d39ce0e723b5d5e11d0f34a9eb463e41",
+    "src/aegisland/forensics/platform_manifest.py": "56beeda395842ca7c93ddc5c9d8978a67447f4a340d3e2d97ccee5d46a57980d",
+    "src/aegisland/forensics/recorder.py": "6ecbc49678b3e093a69eb8c9f562bbffc061f84d3e0cbcb2687ea0cc752fbaa7",
+    "src/aegisland/forensics/report.py": "995fd4aa61e9d779cf68c12dbb287a262fc4c9b98dff85b5cb5048b4300d704d",
+    "src/aegisland/forensics/scope.py": "16ea883883ab35de6cc21aea97bb07c0540678326fb6df60bf47da030551e59b",
+    "src/aegisland/gps_denied.py": "cc135cfbb87df1eb29610c1f9075e5ea15d00ca8a16c2ab9518e010df1311c98",
+    "src/aegisland/motion_compensation.py": "a6810cd3741fc364773777d9b2719a2ba0e1b6b6f262ee77e33edc7701b1397f",
+    "src/aegisland/perception.py": "cc2aa53c214d4e80859eb5601de13b028fa66a35f3f636ebd2b2f107491506f3",
+    "src/aegisland/perception_quality.py": "d3c4be36ad6d260b335544a928394f967ae3001c6e0d196f6d8b7031ec25261c",
+    "src/aegisland/px4/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/aegisland/px4/shadow_policy.py": "13c2fa66491ca9814142c6a3e2137f779366124a0f4ca05ec6c5f8a01d64d648",
+    "src/aegisland/px4/supervisor.py": "78e4594dd93d29e7e0053b13ba5537259a3c4c7cf0e3a167a0c010b51eb204a5",
+    "src/aegisland/px4/telemetry.py": "8c33e3808ea93c8d4231c2e75f0ebf85c358b28162d0b88ba511f337379ba24c",
+    "src/aegisland/px4/watchdog.py": "005f58898f1c15ce7b3096f0f19fc0bbe04b197bb979d42c02a0959f17f29c1b",
+    "src/aegisland/sensor_health.py": "3a98d4c4a820ac4fd187c36ffbfb9d4d95d9cdde8efddbce08bb0ed26e3c890a",
+    "src/aegisland/stage_timing.py": "43407040ffb379caca99f4112145356ff1067bbf9a44fc2411486c3379a7230a",
+    "src/aegisland/trace.py": "327ac21885105e76658984008a10657ee44c2d5589873e72c05487cc57efd4f7",
+    "src/aegisland/trajectory_eval.py": "8b146e6b66b2a7190b90c04851416e118a8e5b120d12b01a2069cb12f1e6ec43",
+    "tests/forensics_replay_smoke.cjs": "810aaaa630fa8b36728e22b9583b0911d5bad5978d4934720b9985d1e0ee9130",
+    "tests/test_benchmark_contract.py": "a38689bc3863f56e9893e485c108001a5e20fa85e0d7b67e8f0e7865f475f062",
+    "tests/test_competition_contract.py": "7c574771e8e92c4018338fcf1d7f32bd979df78b46d96359384605e3c1c69306",
+    "tests/test_course_adversarial.py": "8cae0caa04bdbd08a2fe1837c5bf9ed5c8a1109aa2b30d09d59998403103a1e5",
+    "tests/test_course_perception.py": "05ec55f386f78e06413a0fdd7f7b5a4650857e9c3fe27d7437654d18b2c694fb",
+    "tests/test_depth_sectors.py": "bffc4eb0725b827adf7a77e3ee300473eb5297ad3b7a12751d3d02008e3a7e90",
+    "tests/test_forensics.py": "ae5b80cc9de2f96a48bfea59fd77a0a48f926f0980becf5752117b734ecdabf7",
+    "tests/test_forensics_integration.py": "1a00893579b959849c41b01314592969a822b0c1166a3f85010bc3f090aea16c",
+    "tests/test_gps_denied.py": "024002b7ccb2508e658c7232a97648bb02e07a93373ea70045a715f5ebaed487",
+    "tests/test_perception_quality.py": "027fb83cfa21445cee322cbd891bcd777ed0560a33f62b7279c0b285b4a13105",
+    "tests/test_px4_supervisor.py": "ae20c7995b8a9d75c133a75eff3fe8ba97306f3ca3c9cfb6c294682c93a215df",
+    "tests/test_px4_telemetry.py": "388de45a4a5aedc2ac49d8062b04c008405a0bc60953ccd9c9fc4d42fd8c24cc",
+    "tests/test_px4_watchdog.py": "b1750e82e21b687ec38e820fba88f1361aed4ca3602a2bccffc544e8272f70f2",
+    "tests/test_sensor_health.py": "230fd313e0aeb4a1e80b3f42a2845a05fd983fbcf3c319c8a9fffad0f93deddb",
+    "tools/run_tests.py": "a589828a6e426ee66da7a3678ec5593474fefa428529c0978b502dba38d49b75"
+  },
+  "symbols": {
+    "src/aegisland/__init__.py": [],
+    "src/aegisland/benchmark_adapters.py": [
+      {
+        "name": "frame",
+        "line": 22
+      },
+      {
+        "name": "unavailable_memory",
+        "line": 35
+      },
+      {
+        "name": "checked_trajectory",
+        "line": 44
+      },
+      {
+        "name": "legacy",
+        "line": 51
+      },
+      {
+        "name": "recorded",
+        "line": 164
+      },
+      {
+        "name": "synthetic",
+        "line": 203
+      },
+      {
+        "name": "euroc_inputs",
+        "line": 211
+      },
+      {
+        "name": "run_vdr",
+        "line": 237
+      }
+    ],
+    "src/aegisland/benchmark_contract.py": [
+      {
+        "name": "finite_tree",
+        "line": 21
+      },
+      {
+        "name": "_object",
+        "line": 34
+      },
+      {
+        "name": "strict_json",
+        "line": 43
+      },
+      {
+        "name": "read_json",
+        "line": 47
+      },
+      {
+        "name": "integer",
+        "line": 51
+      },
+      {
+        "name": "number",
+        "line": 57
+      },
+      {
+        "name": "timestamps",
+        "line": 63
+      },
+      {
+        "name": "read_jsonl",
+        "line": 73
+      },
+      {
+        "name": "validate_platform",
+        "line": 87
+      },
+      {
+        "name": "validate_frames",
+        "line": 103
+      },
+      {
+        "name": "percentiles",
+        "line": 167
+      },
+      {
+        "name": "summarize",
+        "line": 176
+      }
+    ],
+    "src/aegisland/benchmark_harness.py": [
+      {
+        "name": "sha256",
+        "line": 37
+      },
+      {
+        "name": "write_json",
+        "line": 45
+      },
+      {
+        "name": "git",
+        "line": 49
+      },
+      {
+        "name": "environment",
+        "line": 60
+      },
+      {
+        "name": "host_platform",
+        "line": 76
+      },
+      {
+        "name": "checksum_index",
+        "line": 90
+      },
+      {
+        "name": "seal",
+        "line": 98
+      },
+      {
+        "name": "snapshot",
+        "line": 104
+      },
+      {
+        "name": "accuracy",
+        "line": 126
+      },
+      {
+        "name": "run",
+        "line": 174
+      },
+      {
+        "name": "verify_run",
+        "line": 321
+      },
+      {
+        "name": "main",
+        "line": 352
+      }
+    ],
+    "src/aegisland/competition_contract.py": [
+      {
+        "name": "IntegrationMode",
+        "line": 10
+      },
+      {
+        "name": "Authority",
+        "line": 17
+      },
+      {
+        "name": "AdvisorySetpoint",
+        "line": 24
+      },
+      {
+        "name": "GateInputs",
+        "line": 52
+      },
+      {
+        "name": "GateResult",
+        "line": 63
+      },
+      {
+        "name": "SafetyLimits",
+        "line": 71
+      },
+      {
+        "name": "SetpointSafetyGate",
+        "line": 78
+      },
+      {
+        "name": "__post_init__",
+        "line": 37
+      },
+      {
+        "name": "__init__",
+        "line": 81
+      },
+      {
+        "name": "evaluate",
+        "line": 84
+      }
+    ],
+    "src/aegisland/course_config.py": [
+      {
+        "name": "CourseConfig",
+        "line": 14
+      },
+      {
+        "name": "__post_init__",
+        "line": 84
+      },
+      {
+        "name": "snapshot",
+        "line": 146
+      }
+    ],
+    "src/aegisland/course_perception.py": [
+      {
+        "name": "OfflineFrame",
+        "line": 25
+      },
+      {
+        "name": "_box_normalized",
+        "line": 89
+      },
+      {
+        "name": "_iou",
+        "line": 94
+      },
+      {
+        "name": "CoursePerception",
+        "line": 101
+      },
+      {
+        "name": "validate",
+        "line": 39
+      },
+      {
+        "name": "__init__",
+        "line": 102
+      },
+      {
+        "name": "observe",
+        "line": 105
+      },
+      {
+        "name": "_contrast_mask",
+        "line": 211
+      },
+      {
+        "name": "_line",
+        "line": 217
+      },
+      {
+        "name": "_line_geometry",
+        "line": 332
+      },
+      {
+        "name": "_depth",
+        "line": 380
+      },
+      {
+        "name": "_local_depth",
+        "line": 417
+      },
+      {
+        "name": "_clearance",
+        "line": 433
+      },
+      {
+        "name": "_rgb_depth_conflict",
+        "line": 506
+      },
+      {
+        "name": "_openings",
+        "line": 543
+      },
+      {
+        "name": "_landing",
+        "line": 594
+      },
+      {
+        "name": "_plane",
+        "line": 725
+      }
+    ],
+    "src/aegisland/course_replay.py": [
+      {
+        "name": "load_recording",
+        "line": 23
+      },
+      {
+        "name": "_write_json",
+        "line": 56
+      },
+      {
+        "name": "run",
+        "line": 62
+      },
+      {
+        "name": "main",
+        "line": 235
+      },
+      {
+        "name": "timestamp",
+        "line": 32
+      }
+    ],
+    "src/aegisland/course_synthetic.py": [
+      {
+        "name": "synthetic_frame",
+        "line": 14
+      },
+      {
+        "name": "suite",
+        "line": 141
+      },
+      {
+        "name": "adversarial_frame",
+        "line": 191
+      },
+      {
+        "name": "adversarial_suite",
+        "line": 241
+      }
+    ],
+    "src/aegisland/depth_sectors.py": [
+      {
+        "name": "Intrinsics",
+        "line": 29
+      },
+      {
+        "name": "SectorConfig",
+        "line": 37
+      },
+      {
+        "name": "SectorResult",
+        "line": 50
+      },
+      {
+        "name": "ObstacleReport",
+        "line": 59
+      },
+      {
+        "name": "_azimuth_elevation",
+        "line": 74
+      },
+      {
+        "name": "sector_report",
+        "line": 88
+      },
+      {
+        "name": "depth_from_oak_mm",
+        "line": 157
+      },
+      {
+        "name": "depth_from_disparity",
+        "line": 164
+      },
+      {
+        "name": "min_depth_m",
+        "line": 174
+      },
+      {
+        "name": "nearest_m",
+        "line": 68
+      }
+    ],
+    "src/aegisland/domain.py": [
+      {
+        "name": "Action",
+        "line": 8
+      },
+      {
+        "name": "SafetyLevel",
+        "line": 23
+      },
+      {
+        "name": "Telemetry",
+        "line": 31
+      },
+      {
+        "name": "ZoneCandidate",
+        "line": 47
+      },
+      {
+        "name": "VisionEvidence",
+        "line": 60
+      },
+      {
+        "name": "Decision",
+        "line": 129
+      },
+      {
+        "name": "TraceEvent",
+        "line": 141
+      },
+      {
+        "name": "jsonable",
+        "line": 151
+      },
+      {
+        "name": "__post_init__",
+        "line": 39
+      },
+      {
+        "name": "best_zone",
+        "line": 124
+      }
+    ],
+    "src/aegisland/forensics/__init__.py": [],
+    "src/aegisland/forensics/__main__.py": [],
+    "src/aegisland/forensics/alignment.py": [
+      {
+        "name": "Alignment",
+        "line": 12
+      },
+      {
+        "name": "has_rollback",
+        "line": 44
+      },
+      {
+        "name": "load_alignment",
+        "line": 55
+      },
+      {
+        "name": "map_jetson",
+        "line": 20
+      },
+      {
+        "name": "to_dict",
+        "line": 31
+      },
+      {
+        "name": "unknown",
+        "line": 60
+      }
+    ],
+    "src/aegisland/forensics/analysis.py": [
+      {
+        "name": "Thresholds",
+        "line": 16
+      },
+      {
+        "name": "detect",
+        "line": 29
+      },
+      {
+        "name": "_coverage",
+        "line": 197
+      },
+      {
+        "name": "Analysis",
+        "line": 233
+      },
+      {
+        "name": "analyze",
+        "line": 326
+      },
+      {
+        "name": "__post_init__",
+        "line": 23
+      },
+      {
+        "name": "add",
+        "line": 33
+      },
+      {
+        "name": "executed",
+        "line": 241
+      },
+      {
+        "name": "to_dict",
+        "line": 244
+      }
+    ],
+    "src/aegisland/forensics/cli.py": [
+      {
+        "name": "main",
+        "line": 15
+      }
+    ],
+    "src/aegisland/forensics/fixtures.py": [
+      {
+        "name": "_message",
+        "line": 12
+      },
+      {
+        "name": "synthetic_ulog",
+        "line": 16
+      },
+      {
+        "name": "jetson_row",
+        "line": 50
+      },
+      {
+        "name": "_jsonl",
+        "line": 69
+      },
+      {
+        "name": "fixture_payloads",
+        "line": 75
+      },
+      {
+        "name": "write_fixtures",
+        "line": 140
+      }
+    ],
+    "src/aegisland/forensics/ingest.py": [
+      {
+        "name": "jetson_errors",
+        "line": 47
+      },
+      {
+        "name": "ingest_jetson",
+        "line": 91
+      },
+      {
+        "name": "_framed_prefix",
+        "line": 138
+      },
+      {
+        "name": "ingest_px4",
+        "line": 180
+      }
+    ],
+    "src/aegisland/forensics/integration.py": [
+      {
+        "name": "require",
+        "line": 64
+      },
+      {
+        "name": "vector",
+        "line": 69
+      },
+      {
+        "name": "quaternion",
+        "line": 73
+      },
+      {
+        "name": "calibration_valid",
+        "line": 81
+      },
+      {
+        "name": "transform_valid",
+        "line": 105
+      },
+      {
+        "name": "validate_record",
+        "line": 120
+      },
+      {
+        "name": "validate_local_plane",
+        "line": 249
+      },
+      {
+        "name": "load_frame",
+        "line": 327
+      },
+      {
+        "name": "_down_axis",
+        "line": 362
+      },
+      {
+        "name": "audit_bundle",
+        "line": 367
+      },
+      {
+        "name": "_check_clock_pairs",
+        "line": 678
+      },
+      {
+        "name": "integration_reports",
+        "line": 744
+      },
+      {
+        "name": "issue",
+        "line": 375
+      },
+      {
+        "name": "capture",
+        "line": 389
+      }
+    ],
+    "src/aegisland/forensics/integration_fixtures.py": [
+      {
+        "name": "frame_bytes",
+        "line": 15
+      },
+      {
+        "name": "bundle_payloads",
+        "line": 34
+      },
+      {
+        "name": "write_bundle",
+        "line": 173
+      }
+    ],
+    "src/aegisland/forensics/model.py": [
+      {
+        "name": "sha256",
+        "line": 17
+      },
+      {
+        "name": "strict_json",
+        "line": 21
+      },
+      {
+        "name": "finite",
+        "line": 36
+      },
+      {
+        "name": "integer",
+        "line": 44
+      },
+      {
+        "name": "Sample",
+        "line": 49
+      },
+      {
+        "name": "Finding",
+        "line": 63
+      },
+      {
+        "name": "Ingestion",
+        "line": 79
+      },
+      {
+        "name": "read_snapshot",
+        "line": 104
+      },
+      {
+        "name": "constant",
+        "line": 22
+      },
+      {
+        "name": "pairs",
+        "line": 25
+      },
+      {
+        "name": "executed",
+        "line": 58
+      },
+      {
+        "name": "to_dict",
+        "line": 74
+      },
+      {
+        "name": "issue",
+        "line": 89
+      }
+    ],
+    "src/aegisland/forensics/platform_manifest.py": [
+      {
+        "name": "platform_manifest",
+        "line": 16
+      },
+      {
+        "name": "_package",
+        "line": 58
+      },
+      {
+        "name": "preflight",
+        "line": 66
+      },
+      {
+        "name": "preflight_reports",
+        "line": 152
+      }
+    ],
+    "src/aegisland/forensics/recorder.py": [
+      {
+        "name": "read_regular",
+        "line": 19
+      },
+      {
+        "name": "relative_file",
+        "line": 33
+      },
+      {
+        "name": "json_bytes",
+        "line": 48
+      },
+      {
+        "name": "_safe_authority",
+        "line": 52
+      },
+      {
+        "name": "record_run",
+        "line": 71
+      },
+      {
+        "name": "verify_run",
+        "line": 140
+      },
+      {
+        "name": "finding_classes",
+        "line": 186
+      }
+    ],
+    "src/aegisland/forensics/report.py": [
+      {
+        "name": "_md",
+        "line": 16
+      },
+      {
+        "name": "ledger",
+        "line": 23
+      },
+      {
+        "name": "render_html",
+        "line": 96
+      },
+      {
+        "name": "write_reports",
+        "line": 242
+      }
+    ],
+    "src/aegisland/forensics/scope.py": [
+      {
+        "name": "geometry_boundary",
+        "line": 12
+      }
+    ],
+    "src/aegisland/gps_denied.py": [
+      {
+        "name": "RelativePose2D",
+        "line": 10
+      },
+      {
+        "name": "VisualDeadReckoner",
+        "line": 19
+      },
+      {
+        "name": "__init__",
+        "line": 32
+      },
+      {
+        "name": "update",
+        "line": 47
+      },
+      {
+        "name": "current",
+        "line": 98
+      }
+    ],
+    "src/aegisland/motion_compensation.py": [
+      {
+        "name": "require_opencv",
+        "line": 17
+      },
+      {
+        "name": "MotionCompensationResult",
+        "line": 23
+      },
+      {
+        "name": "CameraMotionCompensator",
+        "line": 32
+      },
+      {
+        "name": "__init__",
+        "line": 35
+      },
+      {
+        "name": "_features",
+        "line": 68
+      },
+      {
+        "name": "compensate",
+        "line": 84
+      },
+      {
+        "name": "_homography_is_sane",
+        "line": 211
+      },
+      {
+        "name": "_failure",
+        "line": 249
+      }
+    ],
+    "src/aegisland/perception.py": [
+      {
+        "name": "require_opencv",
+        "line": 23
+      },
+      {
+        "name": "clahe_gray",
+        "line": 28
+      },
+      {
+        "name": "PerceptionConfig",
+        "line": 34
+      },
+      {
+        "name": "OpenCVLandingPerception",
+        "line": 43
+      },
+      {
+        "name": "__init__",
+        "line": 51
+      },
+      {
+        "name": "observe",
+        "line": 60
+      },
+      {
+        "name": "enhance_for_active_perception",
+        "line": 195
+      },
+      {
+        "name": "_resize",
+        "line": 202
+      },
+      {
+        "name": "_motion",
+        "line": 209
+      },
+      {
+        "name": "_score_grid",
+        "line": 354
+      },
+      {
+        "name": "_annotate",
+        "line": 434
+      }
+    ],
+    "src/aegisland/perception_quality.py": [
+      {
+        "name": "PerceptionFailureType",
+        "line": 10
+      },
+      {
+        "name": "PerceptionQualityResult",
+        "line": 21
+      },
+      {
+        "name": "PerceptionQualityMonitor",
+        "line": 38
+      },
+      {
+        "name": "__init__",
+        "line": 49
+      },
+      {
+        "name": "analyze",
+        "line": 81
+      },
+      {
+        "name": "_classify",
+        "line": 214
+      },
+      {
+        "name": "_entropy",
+        "line": 297
+      },
+      {
+        "name": "_largest_region_ratio",
+        "line": 318
+      },
+      {
+        "name": "_image_score",
+        "line": 335
+      },
+      {
+        "name": "_geometry_score",
+        "line": 375
+      },
+      {
+        "name": "_clamp",
+        "line": 397
+      }
+    ],
+    "src/aegisland/px4/__init__.py": [],
+    "src/aegisland/px4/shadow_policy.py": [
+      {
+        "name": "ShadowAuthority",
+        "line": 10
+      },
+      {
+        "name": "ShadowNavigationMode",
+        "line": 15
+      },
+      {
+        "name": "ShadowDecision",
+        "line": 21
+      },
+      {
+        "name": "decide_shadow_action",
+        "line": 29
+      }
+    ],
+    "src/aegisland/px4/supervisor.py": [
+      {
+        "name": "Px4ShadowDecision",
+        "line": 18
+      },
+      {
+        "name": "Px4ShadowSupervisor",
+        "line": 35
+      },
+      {
+        "name": "__init__",
+        "line": 51
+      },
+      {
+        "name": "step",
+        "line": 65
+      }
+    ],
+    "src/aegisland/px4/telemetry.py": [
+      {
+        "name": "Px4TelemetrySnapshot",
+        "line": 10
+      },
+      {
+        "name": "normalize_px4_telemetry",
+        "line": 23
+      }
+    ],
+    "src/aegisland/px4/watchdog.py": [
+      {
+        "name": "LinkHealth",
+        "line": 7
+      },
+      {
+        "name": "TelemetryWatchdogResult",
+        "line": 14
+      },
+      {
+        "name": "evaluate_telemetry_freshness",
+        "line": 20
+      }
+    ],
+    "src/aegisland/sensor_health.py": [
+      {
+        "name": "SensorHealthState",
+        "line": 7
+      },
+      {
+        "name": "SensorHealthResult",
+        "line": 14
+      },
+      {
+        "name": "_SensorState",
+        "line": 25
+      },
+      {
+        "name": "SensorHealthMonitor",
+        "line": 30
+      },
+      {
+        "name": "__init__",
+        "line": 44
+      },
+      {
+        "name": "assess",
+        "line": 68
+      },
+      {
+        "name": "reset",
+        "line": 190
+      },
+      {
+        "name": "_clamp",
+        "line": 200
+      },
+      {
+        "name": "_result",
+        "line": 207
+      }
+    ],
+    "src/aegisland/stage_timing.py": [
+      {
+        "name": "Collector",
+        "line": 113
+      },
+      {
+        "name": "_key",
+        "line": 148
+      },
+      {
+        "name": "_compile",
+        "line": 160
+      },
+      {
+        "name": "instrument",
+        "line": 284
+      },
+      {
+        "name": "__init__",
+        "line": 114
+      },
+      {
+        "name": "span",
+        "line": 120
+      },
+      {
+        "name": "call",
+        "line": 143
+      },
+      {
+        "name": "WrapCall",
+        "line": 234
+      },
+      {
+        "name": "visit_Call",
+        "line": 235
+      }
+    ],
+    "src/aegisland/trace.py": [
+      {
+        "name": "JsonlTraceStore",
+        "line": 12
+      },
+      {
+        "name": "CloudTraceStore",
+        "line": 24
+      },
+      {
+        "name": "MemoryTraceStore",
+        "line": 58
+      },
+      {
+        "name": "__init__",
+        "line": 13
+      },
+      {
+        "name": "write",
+        "line": 19
+      },
+      {
+        "name": "__init__",
+        "line": 27
+      },
+      {
+        "name": "write",
+        "line": 31
+      },
+      {
+        "name": "__init__",
+        "line": 59
+      },
+      {
+        "name": "write",
+        "line": 62
+      }
+    ],
+    "src/aegisland/trajectory_eval.py": [
+      {
+        "name": "Trajectory",
+        "line": 26
+      },
+      {
+        "name": "_normalized",
+        "line": 42
+      },
+      {
+        "name": "quaternion_to_matrix",
+        "line": 49
+      },
+      {
+        "name": "load_tum",
+        "line": 60
+      },
+      {
+        "name": "write_tum",
+        "line": 73
+      },
+      {
+        "name": "load_euroc_groundtruth",
+        "line": 85
+      },
+      {
+        "name": "associate",
+        "line": 105
+      },
+      {
+        "name": "umeyama_alignment",
+        "line": 132
+      },
+      {
+        "name": "_matched",
+        "line": 158
+      },
+      {
+        "name": "absolute_trajectory_error",
+        "line": 174
+      },
+      {
+        "name": "_pose_matrix",
+        "line": 200
+      },
+      {
+        "name": "relative_pose_error",
+        "line": 207
+      },
+      {
+        "name": "__post_init__",
+        "line": 31
+      }
+    ]
+  },
+  "broken_markdown_links": [
+    {
+      "file": "docs/course-perception-design.md",
+      "target": "../examples/course-perception-hardened/config.json"
+    },
+    {
+      "file": "docs/course-perception-design.md",
+      "target": "generality-defense.md"
+    },
+    {
+      "file": "docs/course-perception-design.md",
+      "target": "../examples/course-perception-hardened/report.md"
+    },
+    {
+      "file": "docs/dronehacks-benchmark-contract.md",
+      "target": "dronehacks/gps-denied-benchmark-plan.md"
+    },
+    {
+      "file": "docs/forensics/README.md",
+      "target": "integration-plan.md"
+    },
+    {
+      "file": "docs/forensics/integration-replay.md",
+      "target": "integration-plan.md"
+    },
+    {
+      "file": "docs/license-and-redistribution-review.md",
+      "target": "../provenance/audit-evidence.json"
+    },
+    {
+      "file": "docs/upstream-method-matrix.md",
+      "target": "../provenance/audit-evidence.json"
+    }
+  ],
+  "provenance": {
+    "rows": 60,
+    "categories": {
+      "small_source_or_document_evidence": 44,
+      "release_asset_metadata_only": 14,
+      "excluded_large_asset": 2
+    },
+    "missing_verifier_inputs": [
+      "docs/handoffs/provenance-HANDOFF.md",
+      "provenance/audit-evidence.json"
+    ],
+    "original_verifier_execution": "NOT_RUN: writes canonical provenance report; missing migrated inputs; no external cache accessed"
+  },
+  "tracked_assets": []
+}

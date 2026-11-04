@@ -1,0 +1,17 @@
+{"case": "valid_simulation_reference", "result": {"accepted": true, "authority": "SIMULATION_ONLY", "reasons": [], "executed": false}}
+{"case": "observer_reference", "result": {"accepted": false, "authority": "NONE", "reasons": ["non_executing_mode"], "executed": false}}
+{"case": "unknown_mode", "result": {"accepted": true, "authority": "HARDWARE_GATED", "reasons": [], "executed": false}}
+{"case": "nan_now", "result": {"accepted": true, "authority": "SIMULATION_ONLY", "reasons": [], "executed": false}}
+{"case": "nan_timestamp", "result": {"accepted": true, "authority": "SIMULATION_ONLY", "reasons": [], "executed": false}}
+{"case": "truthy_invalid_health", "result": {"accepted": true, "authority": "SIMULATION_ONLY", "reasons": [], "executed": false}}
+{"case": "nan_speed_limit", "result": {"accepted": true, "authority": "SIMULATION_ONLY", "reasons": [], "executed": false}}
+{"case": "unknown_depth_lateral", "result": {"accepted": true, "authority": "SIMULATION_ONLY", "reasons": [], "executed": false}}
+{"case": "unknown_depth_negative_x", "result": {"accepted": true, "authority": "SIMULATION_ONLY", "reasons": [], "executed": false}}
+{"case": "unknown_depth_local_ned", "result": {"accepted": true, "authority": "SIMULATION_ONLY", "reasons": [], "executed": false}}
+{"case": "zero_confidence", "result": {"accepted": true, "authority": "SIMULATION_ONLY", "reasons": [], "executed": false}}
+{"case": "executed_integer_zero", "type": "int"}
+{"case": "nan_watchdog_age", "health": "healthy", "stale": false}
+{"case": "healthy_link_without_gps", "result": {"navigation_mode": "degraded", "authority": "revoked", "action": "hold_and_scan", "executed": false, "reason": "gps unavailable"}}
+{"case": "nan_sensor_confidence", "sample": 1, "result": {"source": "nan_sensor", "state": "degraded", "raw_confidence": 1.0, "effective_confidence": 0.7, "valid": true, "recovery_streak": 1, "reason": "Sensor is recovering but has not satisfied hysteresis."}}
+{"case": "nan_sensor_confidence", "sample": 2, "result": {"source": "nan_sensor", "state": "degraded", "raw_confidence": 1.0, "effective_confidence": 0.7, "valid": true, "recovery_streak": 2, "reason": "Healthy observations are accumulating for recovery."}}
+{"case": "nan_sensor_confidence", "sample": 3, "result": {"source": "nan_sensor", "state": "healthy", "raw_confidence": 1.0, "effective_confidence": 1.0, "valid": true, "recovery_streak": 0, "reason": "Sensor health is stable."}}

@@ -1,0 +1,347 @@
+{
+  "description": "Generated audit captures; local originals preserved; metadata hashes refer to original raw output unless indicated. Derivatives are not raw originals where transformed.",
+  "files": [
+    {
+      "original_local_path": "evidence/web-access.json",
+      "portable_path": "portable/evidence/web-access.json",
+      "original_sha256": "e24ca7881aea66cd624be309830949a6e15b989ad4fae0ef1dc1c8ce56a72801",
+      "derivative_sha256": "e24ca7881aea66cd624be309830949a6e15b989ad4fae0ef1dc1c8ce56a72801",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 1688,
+      "derivative_size_bytes": 1688
+    },
+    {
+      "original_local_path": "evidence/course-replay/config.json",
+      "portable_path": "portable/evidence/course-replay/config.json",
+      "original_sha256": "b8291e137f33937b03fd71aef9689b94a5d39d9a73877e1cf3b2b05eba040156",
+      "derivative_sha256": "b8291e137f33937b03fd71aef9689b94a5d39d9a73877e1cf3b2b05eba040156",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 2387,
+      "derivative_size_bytes": 2387
+    },
+    {
+      "original_local_path": "evidence/course-replay/report.json",
+      "portable_path": "portable/evidence/course-replay/report.json",
+      "original_sha256": "c10183992ecc12e6c6a45978e25c4de0c57becc3ec0376ee9477cead59406b64",
+      "derivative_sha256": "c10183992ecc12e6c6a45978e25c4de0c57becc3ec0376ee9477cead59406b64",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 39486,
+      "derivative_size_bytes": 39486
+    },
+    {
+      "original_local_path": "evidence/course-replay/report.md",
+      "portable_path": "portable/evidence/course-replay/report.md",
+      "original_sha256": "eb2006b88516280646a84276827bc994864f73026cf8f77137b9c323480715f8",
+      "derivative_sha256": "eb2006b88516280646a84276827bc994864f73026cf8f77137b9c323480715f8",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 7142,
+      "derivative_size_bytes": 7142
+    },
+    {
+      "original_local_path": "evidence/course-replay/trace.jsonl",
+      "portable_path": "portable/evidence/course-replay/trace.jsonl",
+      "original_sha256": "2467acb5e66b55f3ffb61a70636a6e2ad0be516b5cf3f32805a0108281595730",
+      "derivative_sha256": "2467acb5e66b55f3ffb61a70636a6e2ad0be516b5cf3f32805a0108281595730",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 250139,
+      "derivative_size_bytes": 250139
+    },
+    {
+      "original_local_path": "evidence/benchmark-tests.command.json",
+      "portable_path": "portable/evidence/benchmark-tests.command.json",
+      "original_sha256": "44341a2fb60ea1f52f47bd3f79fbab3f1c1587d220fc6a42f855d3b222b73413",
+      "derivative_sha256": "de4526c90a0e7c8e5546ae5d2be705989f7f5bcace3a0692feedd3a5d8aa64bd",
+      "transformation": "replace private checkout root with <AUDIT_CHECKOUT>",
+      "original_size_bytes": 941,
+      "derivative_size_bytes": 891
+    },
+    {
+      "original_local_path": "evidence/benchmark-tests.stdout.txt",
+      "portable_path": "portable/evidence/benchmark-tests.stdout.txt",
+      "original_sha256": "b0a0e7d69822c03d6ed422288000a55b9ce9ac094b1b4e92b98bd3511b440dd1",
+      "derivative_sha256": "b0a0e7d69822c03d6ed422288000a55b9ce9ac094b1b4e92b98bd3511b440dd1",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 99,
+      "derivative_size_bytes": 99
+    },
+    {
+      "original_local_path": "evidence/benchmark-tests.stderr.txt",
+      "portable_path": "portable/evidence/benchmark-tests.stderr.txt",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "derivative_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 0,
+      "derivative_size_bytes": 0
+    },
+    {
+      "original_local_path": "evidence/course-replay.command.json",
+      "portable_path": "portable/evidence/course-replay.command.json",
+      "original_sha256": "a45e936d8fecf619f9d598b0abb53ab23eb0a64dc1bad78bf86df55c200bb4a7",
+      "derivative_sha256": "c8e47b9dfd5ea7741ddce764abe57925ff073fcf577d7f43913c8e25325ae3db",
+      "transformation": "replace private checkout root with <AUDIT_CHECKOUT>",
+      "original_size_bytes": 994,
+      "derivative_size_bytes": 944
+    },
+    {
+      "original_local_path": "evidence/course-replay.stdout.txt",
+      "portable_path": "portable/evidence/course-replay.stdout.txt",
+      "original_sha256": "0a4056b1b89c204098d98b54e1b826486d82fc127b6e3e74bf20f66b056f057a",
+      "derivative_sha256": "0a4056b1b89c204098d98b54e1b826486d82fc127b6e3e74bf20f66b056f057a",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 146,
+      "derivative_size_bytes": 146
+    },
+    {
+      "original_local_path": "evidence/course-replay.stderr.txt",
+      "portable_path": "portable/evidence/course-replay.stderr.txt",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "derivative_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 0,
+      "derivative_size_bytes": 0
+    },
+    {
+      "original_local_path": "evidence/forensics-tests.command.json",
+      "portable_path": "portable/evidence/forensics-tests.command.json",
+      "original_sha256": "51d12308da5c81553abba0459b62db2401aeb7522b46f61af6306ac7a2413087",
+      "derivative_sha256": "fceda45d238087550ec0cc975b3d45654cc82cfed8e829523a195ef843f5c046",
+      "transformation": "replace private checkout root with <AUDIT_CHECKOUT>",
+      "original_size_bytes": 975,
+      "derivative_size_bytes": 925
+    },
+    {
+      "original_local_path": "evidence/forensics-tests.stdout.txt",
+      "portable_path": "portable/evidence/forensics-tests.stdout.txt",
+      "original_sha256": "151fa5409da570d87a24a4d6d07ed779c5697fa192f825befb4d4f6988866c3e",
+      "derivative_sha256": "151fa5409da570d87a24a4d6d07ed779c5697fa192f825befb4d4f6988866c3e",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 260,
+      "derivative_size_bytes": 260
+    },
+    {
+      "original_local_path": "evidence/forensics-tests.stderr.txt",
+      "portable_path": "portable/evidence/forensics-tests.stderr.txt",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "derivative_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 0,
+      "derivative_size_bytes": 0
+    },
+    {
+      "original_local_path": "evidence/perception-tests.command.json",
+      "portable_path": "portable/evidence/perception-tests.command.json",
+      "original_sha256": "b1d4f65c46d51e601aceaf04f8c21a69f5e218f4503dbe46f9a853c33b17362d",
+      "derivative_sha256": "44dfc712e308125dc71b107dbb219e02e75011ba93daff7a01dd8a7fcc0d7596",
+      "transformation": "replace private checkout root with <AUDIT_CHECKOUT>",
+      "original_size_bytes": 1087,
+      "derivative_size_bytes": 1037
+    },
+    {
+      "original_local_path": "evidence/perception-tests.stdout.txt",
+      "portable_path": "portable/evidence/perception-tests.stdout.txt",
+      "original_sha256": "c4f26c31e52c4667cb9c64dda42b6584c9bedd3baa888c4314be1a37d47b95f2",
+      "derivative_sha256": "c4f26c31e52c4667cb9c64dda42b6584c9bedd3baa888c4314be1a37d47b95f2",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 180,
+      "derivative_size_bytes": 180
+    },
+    {
+      "original_local_path": "evidence/perception-tests.stderr.txt",
+      "portable_path": "portable/evidence/perception-tests.stderr.txt",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "derivative_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 0,
+      "derivative_size_bytes": 0
+    },
+    {
+      "original_local_path": "evidence/remote-main.command.json",
+      "portable_path": "portable/evidence/remote-main.command.json",
+      "original_sha256": "e021c826e9076c17c74ddac795f3c7cfcc2e6e8c975880c0f94ecda6ba20f7e0",
+      "derivative_sha256": "f5d3d65a35742319758f9c8c20dd73eb4e49ec8ef9c399a2c62863e5f6022ea2",
+      "transformation": "replace private checkout root with <AUDIT_CHECKOUT>",
+      "original_size_bytes": 884,
+      "derivative_size_bytes": 834
+    },
+    {
+      "original_local_path": "evidence/remote-main.stdout.txt",
+      "portable_path": "portable/evidence/remote-main.stdout.txt",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "derivative_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 0,
+      "derivative_size_bytes": 0
+    },
+    {
+      "original_local_path": "evidence/remote-main.stderr.txt",
+      "portable_path": "portable/evidence/remote-main.stderr.txt",
+      "original_sha256": "d3fde702b8f17c904d59fd1e9e782299744cbbcc4707640ebb1edc49d359203b",
+      "derivative_sha256": "d3fde702b8f17c904d59fd1e9e782299744cbbcc4707640ebb1edc49d359203b",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 123,
+      "derivative_size_bytes": 123
+    },
+    {
+      "original_local_path": "evidence/ruff-check.command.json",
+      "portable_path": "portable/evidence/ruff-check.command.json",
+      "original_sha256": "b049219d3a0af7e184d9788d062f104c4038582f26fb225f1da09cf18cb39d1d",
+      "derivative_sha256": "2f3565ef17871c518417ab555487e7c30201035c469f636e158fcaf376089894",
+      "transformation": "replace private checkout root with <AUDIT_CHECKOUT>",
+      "original_size_bytes": 877,
+      "derivative_size_bytes": 827
+    },
+    {
+      "original_local_path": "evidence/ruff-check.stdout.txt",
+      "portable_path": "portable/evidence/ruff-check.stdout.txt",
+      "original_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "derivative_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 19,
+      "derivative_size_bytes": 19
+    },
+    {
+      "original_local_path": "evidence/ruff-check.stderr.txt",
+      "portable_path": "portable/evidence/ruff-check.stderr.txt",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "derivative_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 0,
+      "derivative_size_bytes": 0
+    },
+    {
+      "original_local_path": "evidence/ruff-format.command.json",
+      "portable_path": "portable/evidence/ruff-format.command.json",
+      "original_sha256": "b98e2fadcf000894349a280411e75f9550c72458d6004993d665d433117cde18",
+      "derivative_sha256": "8eaa6659f0595963994b2565c0484a17a88c9b4b9a40005e92b1a9856a74e2e2",
+      "transformation": "replace private checkout root with <AUDIT_CHECKOUT>",
+      "original_size_bytes": 893,
+      "derivative_size_bytes": 843
+    },
+    {
+      "original_local_path": "evidence/ruff-format.stdout.txt",
+      "portable_path": "portable/evidence/ruff-format.stdout.txt",
+      "original_sha256": "1e8100ce5112b41053a89fae8931d735807139a983d212a9a9d2a8fab1194b67",
+      "derivative_sha256": "1e8100ce5112b41053a89fae8931d735807139a983d212a9a9d2a8fab1194b67",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 27,
+      "derivative_size_bytes": 27
+    },
+    {
+      "original_local_path": "evidence/ruff-format.stderr.txt",
+      "portable_path": "portable/evidence/ruff-format.stderr.txt",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "derivative_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 0,
+      "derivative_size_bytes": 0
+    },
+    {
+      "original_local_path": "evidence/safety-probe-expanded.command.json",
+      "portable_path": "portable/evidence/safety-probe-expanded.command.json",
+      "original_sha256": "0c31f3c614139d96ed06a73c23c479dc8e76d2eab5bc22c842f00652b9dfe427",
+      "derivative_sha256": "48512e6727573b6681c11e84874cf91dbc8f4749f915c0f6635ce3dc41d75c62",
+      "transformation": "replace private checkout root with <AUDIT_CHECKOUT>",
+      "original_size_bytes": 909,
+      "derivative_size_bytes": 859
+    },
+    {
+      "original_local_path": "evidence/safety-probe-expanded.stdout.txt",
+      "portable_path": "portable/evidence/safety-probe-expanded.stdout.txt",
+      "original_sha256": "3b6c00260a5722a6fcaca0e0ff665a93ecb0ec017158c15463a423fea1b4dcdb",
+      "derivative_sha256": "3b6c00260a5722a6fcaca0e0ff665a93ecb0ec017158c15463a423fea1b4dcdb",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 2446,
+      "derivative_size_bytes": 2446
+    },
+    {
+      "original_local_path": "evidence/safety-probe-expanded.stderr.txt",
+      "portable_path": "portable/evidence/safety-probe-expanded.stderr.txt",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "derivative_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 0,
+      "derivative_size_bytes": 0
+    },
+    {
+      "original_local_path": "evidence/safety-tests.command.json",
+      "portable_path": "portable/evidence/safety-tests.command.json",
+      "original_sha256": "224b9775805fb53c04141faae1f2f71f8531f7ec7f8de6735a74a8ad4a23f673",
+      "derivative_sha256": "f85de2e514c9932e223b7acd7ac42a371fd4533003d6cb6b8e767d939439a538",
+      "transformation": "replace private checkout root with <AUDIT_CHECKOUT>",
+      "original_size_bytes": 1083,
+      "derivative_size_bytes": 1033
+    },
+    {
+      "original_local_path": "evidence/safety-tests.stdout.txt",
+      "portable_path": "portable/evidence/safety-tests.stdout.txt",
+      "original_sha256": "0b39b3b85b6e58f1b90c6cdb37778d4396e8febf5cf80af70ea268493c828ddb",
+      "derivative_sha256": "0b39b3b85b6e58f1b90c6cdb37778d4396e8febf5cf80af70ea268493c828ddb",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 99,
+      "derivative_size_bytes": 99
+    },
+    {
+      "original_local_path": "evidence/safety-tests.stderr.txt",
+      "portable_path": "portable/evidence/safety-tests.stderr.txt",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "derivative_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 0,
+      "derivative_size_bytes": 0
+    },
+    {
+      "original_local_path": "evidence/static-inventory.command.json",
+      "portable_path": "portable/evidence/static-inventory.command.json",
+      "original_sha256": "588656a2709829ce03cf806c1457cc169f9b34ea66ece025629ac351ee0191e8",
+      "derivative_sha256": "94b0d42c6bc5bfec44226fdd06eccada19772f811a4a1ca8e13808082e41d7b1",
+      "transformation": "replace private checkout root with <AUDIT_CHECKOUT>",
+      "original_size_bytes": 913,
+      "derivative_size_bytes": 863
+    },
+    {
+      "original_local_path": "evidence/static-inventory.stdout.txt",
+      "portable_path": "portable/evidence/static-inventory.stdout.txt",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "derivative_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 0,
+      "derivative_size_bytes": 0
+    },
+    {
+      "original_local_path": "evidence/static-inventory.stderr.txt",
+      "portable_path": "portable/evidence/static-inventory.stderr.txt",
+      "original_sha256": "8383e4640f0ab241c64f4433134fe7fecd2c957fa3269537bbedc79a500e952b",
+      "derivative_sha256": "a638c8d18012f159dec95d4d028d5f08a77f886cf322589dca1e64c283a338eb",
+      "transformation": "replace private checkout root with <AUDIT_CHECKOUT>",
+      "original_size_bytes": 1204,
+      "derivative_size_bytes": 1179
+    },
+    {
+      "original_local_path": "evidence/static-inventory-v2.command.json",
+      "portable_path": "portable/evidence/static-inventory-v2.command.json",
+      "original_sha256": "fe7a35e759d3c9b2da2254f8253b6fd436bcca1686ff3dccdbfe5d8eb9281d7e",
+      "derivative_sha256": "502396a2904b1507ecd06216f95203e70f8d57c701e4de0ac314b364cdb8fe36",
+      "transformation": "replace private checkout root with <AUDIT_CHECKOUT>",
+      "original_size_bytes": 913,
+      "derivative_size_bytes": 863
+    },
+    {
+      "original_local_path": "evidence/static-inventory-v2.stdout.txt",
+      "portable_path": "portable/evidence/static-inventory-v2.stdout.txt",
+      "original_sha256": "615c2696b59890227fedee7cc9315a9fcfd08e6e386e255e88ea305770ccac9c",
+      "derivative_sha256": "44e6c66470b5817d96b1376de619cfde1056b1f92655ede339b8d287d65acea6",
+      "transformation": "replace private checkout root with <AUDIT_CHECKOUT>",
+      "original_size_bytes": 29300,
+      "derivative_size_bytes": 29275
+    },
+    {
+      "original_local_path": "evidence/static-inventory-v2.stderr.txt",
+      "portable_path": "portable/evidence/static-inventory-v2.stderr.txt",
+      "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "derivative_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "transformation": "byte-identical copy",
+      "original_size_bytes": 0,
+      "derivative_size_bytes": 0
+    }
+  ]
+}

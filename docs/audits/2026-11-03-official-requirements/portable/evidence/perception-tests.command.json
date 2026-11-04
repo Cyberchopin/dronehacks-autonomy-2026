@@ -1,0 +1,32 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-o",
+    "addopts=",
+    "-q",
+    "tests/test_course_perception.py",
+    "tests/test_course_adversarial.py",
+    "tests/test_depth_sectors.py",
+    "tests/test_perception_quality.py",
+    "tests/test_gps_denied.py"
+  ],
+  "cwd": "<AUDIT_CHECKOUT>",
+  "started_utc": "2026-11-03T08:24:36.951508+00:00",
+  "duration_s": 1.9511958450000293,
+  "timeout_s": 120.0,
+  "exit_code": 0,
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "head": "cf4dfae5cae8e4ce63b94bd77a715013ed5c141a",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "<AUDIT_CHECKOUT>/src",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "stdout_sha256": "c4f26c31e52c4667cb9c64dda42b6584c9bedd3baa888c4314be1a37d47b95f2",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

@@ -1,0 +1,56 @@
+{
+  "access_date": "2026-11-03",
+  "method": "web tool open/search/find; content not byte-archived",
+  "results": [
+    {
+      "url": "https://dronehacks.groups.stanford.edu/",
+      "status": "readable",
+      "tier": "OFFICIAL_CURRENT",
+      "section": "event/hardware/eligibility"
+    },
+    {
+      "url": "https://dronehacks.groups.stanford.edu/coc",
+      "status": "readable",
+      "tier": "OFFICIAL_CURRENT",
+      "section": "Drone and Hardware Safety"
+    },
+    {
+      "url": "https://dronehacks.groups.stanford.edu/challenge",
+      "status": "web tool accessibility error; candidate path only",
+      "tier": "UNKNOWN"
+    },
+    {
+      "url": "https://dronehacks.groups.stanford.edu/rules",
+      "status": "web tool accessibility error; candidate path only",
+      "tier": "UNKNOWN"
+    },
+    {
+      "url": "https://dronehacks.groups.stanford.edu/hardware",
+      "status": "web tool accessibility error; candidate path only",
+      "tier": "UNKNOWN"
+    },
+    {
+      "url": "https://www.ros.org/reps/rep-2000.html",
+      "status": "access denied",
+      "tier": "UNKNOWN"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/ros-infrastructure/rep/master/rep-2000.rst",
+      "status": "readable",
+      "tier": "UPSTREAM_PRIMARY",
+      "section": "Humble dependency table"
+    },
+    {
+      "url": "https://docs.px4.io/main/en/ros2/user_guide",
+      "status": "readable",
+      "tier": "UPSTREAM_PRIMARY",
+      "section": "message compatibility; QoS; frames"
+    },
+    {
+      "url": "https://docs.px4.io/main/en/flight_modes/offboard",
+      "status": "readable",
+      "tier": "UPSTREAM_PRIMARY",
+      "section": "Technical Summary"
+    }
+  ]
+}

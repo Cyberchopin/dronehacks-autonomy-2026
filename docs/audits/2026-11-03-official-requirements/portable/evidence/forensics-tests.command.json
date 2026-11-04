@@ -1,0 +1,29 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "-m",
+    "pytest",
+    "-o",
+    "addopts=",
+    "-q",
+    "tests/test_forensics.py",
+    "tests/test_forensics_integration.py"
+  ],
+  "cwd": "<AUDIT_CHECKOUT>",
+  "started_utc": "2026-11-03T08:24:36.971622+00:00",
+  "duration_s": 0.7598121240000637,
+  "timeout_s": 120.0,
+  "exit_code": 0,
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "head": "cf4dfae5cae8e4ce63b94bd77a715013ed5c141a",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "<AUDIT_CHECKOUT>/src",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "stdout_sha256": "151fa5409da570d87a24a4d6d07ed779c5697fa192f825befb4d4f6988866c3e",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

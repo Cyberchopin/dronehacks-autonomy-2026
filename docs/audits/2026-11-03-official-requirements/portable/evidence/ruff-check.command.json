@@ -1,0 +1,25 @@
+{
+  "command": [
+    ".venv/bin/ruff",
+    "check",
+    "src",
+    "tests"
+  ],
+  "cwd": "<AUDIT_CHECKOUT>",
+  "started_utc": "2026-11-03T08:24:50.967768+00:00",
+  "duration_s": 0.012121223000008285,
+  "timeout_s": 30.0,
+  "exit_code": 0,
+  "python": "3.12.3 (main, Aug 31 2026, 10:18:26) [GCC 13.3.0]",
+  "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "head": "cf4dfae5cae8e4ce63b94bd77a715013ed5c141a",
+  "environment_overrides": {
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONPATH": "<AUDIT_CHECKOUT>/src",
+    "PYTEST_DISABLE_PLUGIN_AUTOLOAD": "1",
+    "OMP_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1"
+  },
+  "stdout_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

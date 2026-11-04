@@ -1,0 +1,1 @@
+fatal: unable to access 'https://github.com/Cyberchopin/dronehacks-autonomy-2026.git/': Could not resolve host: github.com
