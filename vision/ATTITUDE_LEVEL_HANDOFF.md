@@ -177,4 +177,34 @@ No modifications to `course/`, `src/`, `nav/`, `replay/` or `simtest/`.
 fatal: unable to access 'https://github.com/Cyberchopin/dronehacks-autonomy-2026/': Could not resolve host: github.com
 ```
 
-Shell push outcome and final branch identity are reported in the Router handoff.
+The authorized push nevertheless succeeded. Implementation commit: `b763f5d`.
+
+```bash
+git commit -m "feat(vision): level forward depth sectors using vehicle attitude"
+git push -u origin vision/attitude-level
+```
+
+Commit output:
+
+```text
+[vision/attitude-level b763f5d] feat(vision): level forward depth sectors using vehicle attitude
+ 10 files changed, 999 insertions(+), 65 deletions(-)
+ create mode 100644 tests/test_vision_forward_sectors_level.py
+ create mode 100644 vision/ATTITUDE_LEVEL_HANDOFF.md
+ create mode 100644 vision/attitude.py
+```
+
+Push output (exit 0):
+
+```text
+remote:
+remote: Create a pull request for 'vision/attitude-level' on GitHub by visiting:
+remote:      https://github.com/Cyberchopin/dronehacks-autonomy-2026/pull/new/vision/attitude-level
+remote:
+To https://github.com/Cyberchopin/dronehacks-autonomy-2026
+ * [new branch]      vision/attitude-level -> vision/attitude-level
+branch 'vision/attitude-level' set up to track 'origin/vision/attitude-level'.
+```
+
+GitHub printed a PR suggestion automatically; no PR was opened. This receipt is a subsequent
+documentation-only commit, with the same required four checks rerun before its push.
