@@ -52,8 +52,21 @@ advisory is validated in the simulator. This module and its tests do not touch `
 python3 -m pytest -q tests/test_nav_line_follow.py     # offline, stdlib only (+ 1 cv2 end-to-end test)
 ```
 
+## Closed-loop sanity (`nav/line_follow_sim.py`)
+
+A kinematic offline loop runs the **real** detector and controller together: it renders a straight
+floor line as a forward/down camera would see it, detects it, steers, and advances a simple
+kinematic model. It is **not** the DroneHacks simulator and not flight dynamics — it checks that the
+sign convention is right and the default gains converge rather than diverge.
+
+Result with defaults: from a 0.3-0.5 m lateral offset the loop settles to < 5 cm without
+overshooting past the start; a heading error alone stays within ~25 cm; and when the line is
+blanked, the follower recommends `stop` ~1.5 s later (= `lost_s`). Run it:
+`python3 -m nav.line_follow_sim`.
+
 ## Status
 
-21 offline tests pass (sign convention, bounds, deadbands, fail-safe, one end-to-end through
-`vision/floor_line.py`). **Not wired into refnav and not run in the simulator.** Gains are untuned
-guesses; they need tuning against the real camera and flight response.
+29 offline tests pass: 21 on the controller (sign convention, bounds, deadbands, fail-safe, one
+end-to-end through `vision/floor_line.py`) and 8 closed-loop convergence/fail-safe checks.
+**Not wired into refnav and not run in the DroneHacks simulator.** Gains converge in the kinematic
+loop but are still guesses; they need tuning against the real camera and flight response.
