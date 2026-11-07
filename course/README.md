@@ -5,7 +5,8 @@ map from the published layout (rule 6.4); feature priors, not a hard-coded route
 `extract_layout.py` reads the current published OBJ and returns or writes named
 feature bounds, AABB midpoints, and a coarse XY obstacle grid. There are no flight
 waypoints, timings, traversal order, flight interfaces, or simulator imports.
-Runtime dependencies are Python 3.11+ and NumPy; tests also require pytest.
+Extraction dependencies are Python 3.11+ and NumPy. The PNG renderer additionally
+requires Matplotlib; tests require pytest and, for plotting tests, Matplotlib.
 
 The source is the **published DroneHacks 2026 course model, v3**,
 `dronehacks-course-v3.obj`, distributed with its MTL, STEP, and `README.txt`.
@@ -136,10 +137,45 @@ Landing-pad rings, cross, launch mark, guideline, boulders, supports, maze walls
 barriers, and net pieces are all available under their original group names.
 No group is silently dropped or assigned a checkpoint based on a suggestive label.
 
+## Top-down PNG
+
+```bash
+python3 course/plot_layout.py course/layout.json --out course/layout.png
+```
+
+`plot_layout.py` uses Matplotlib's headless **Agg** backend. Install Matplotlib
+in the environment used to run this command and the full `course/tests/` suite;
+it is not currently declared by the repository's top-level package configuration.
+The renderer reads only the supplied JSON and writes the PNG. `--dpi` controls
+output resolution (default 180; accepted range 40–600).
+
+The image includes the full source filename and SHA-256, a metre scale bar,
+and the occupancy array with X increasing right and Y increasing up. Its real
+origin, resolution, and row/column shape come from the JSON. Every named feature
+has a numbered label on the map and its full name in the feature key. The IDs
+index source groups; they do not prescribe a route.
+
+**Feature outlines are XY AABBs**, because the JSON does not store individual
+mesh outlines. This includes the rectangular bounds of rings and rotated walls;
+the more detailed obstacle footprints are visible in the occupancy background.
+Coincident bounds can overlap. Excluded floor/marking/roof groups use dotted
+outlines. A feature carrying an UNKNOWN flag uses an orange dashed outline and
+a question mark; the complete issue appears in the UNKNOWN register.
+
+Unlocated semantic priors such as gate/window apertures appear **only in that
+register**, explicitly marked UNKNOWN / UNLOCATED. They receive no guessed map
+position. The v3 render contains all **33 feature bounds and labels** and all
+**7 UNKNOWN records**: 4 flagged features and 3 unlocated semantic priors.
+The CLI reports these counts and the PNG's pixel dimensions and byte size.
+`build_figure(layout)` also returns the coverage report for programmatic use.
+
+The committed image is a presentation/checking artifact of the committed JSON.
+After updating the model, regenerate the JSON first, then regenerate the image.
+
 ## Offline checks
 
 ```bash
-python3 -m pytest -q course/tests/test_extract_layout.py
+python3 -m pytest -q course/tests/
 ruff check course && ruff format --check course
 ```
 
@@ -147,7 +183,8 @@ Tests construct tiny OBJs locally and require neither the large published model
 nor network access. For ownership-isolated test runs, first run
 `mkdir -p course/.test-tmp`, then set `PYTHONDONTWRITEBYTECODE=1`,
 `PYTEST_ADDOPTS="-o cache_dir=course/.pytest_cache --basetemp=course/.test-tmp/pytest"`,
-and `RUFF_CACHE_DIR=course/.ruff_cache`; use a fresh `--basetemp` for each run.
+`RUFF_CACHE_DIR=course/.ruff_cache`, and
+`MPLCONFIGDIR="$PWD/course/.test-tmp/matplotlib"`; use a fresh `--basetemp` for each run.
 The current repository workflow checks `src/` and top-level `tests/` explicitly;
 it does not yet select `course/`. The commands above verify this directory
 without changing that workflow outside this task's ownership.
