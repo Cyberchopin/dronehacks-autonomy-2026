@@ -164,6 +164,95 @@ def _line_geometry(gray, component, rows, widths, top, c: LineConfig):
     return geometry, reasons, fit_rows
 
 
+def _row_runs(row: np.ndarray) -> list[tuple[int, int]]:
+    """Contiguous True runs in one mask row as (start, end_exclusive)."""
+    d = np.diff(np.concatenate(([0], row.astype(np.int8), [0])))
+    return list(zip(np.flatnonzero(d == 1).tolist(), np.flatnonzero(d == -1).tolist()))
+
+
+def _spine_prune(component: np.ndarray, c: LineConfig) -> np.ndarray | None:
+    """Recover a stripe from a component that floor clutter (dots, chips, stains) has fused onto.
+
+    A deterministic RANSAC fit through NARROW runs finds the straight spine; the stripe is rebuilt
+    from the run on that spine in each row, and runs widened by touching clutter are trimmed to the
+    local stripe width. Returns None unless clean narrow runs on the spine support most rows, so a
+    blob of clutter cannot be turned into a line. The result still faces every normal gate."""
+    h, w = component.shape
+    runs = {y: _row_runs(component[y]) for y in np.flatnonzero(component.any(axis=1))}
+    seeds = [
+        (y, (s + e - 1) / 2.0, e - s)
+        for y, rs in runs.items()
+        for s, e in rs
+        if e - s <= c.max_width_fraction * w
+    ]
+    if len({y for y, _, _ in seeds}) < c.min_geometry_rows:
+        return None
+    sy = np.array([v[0] for v in seeds], float)
+    sx = np.array([v[1] for v in seeds], float)
+    sw = np.array([v[2] for v in seeds], float)
+    tol = max(3.0, 0.75 * float(np.median(sw)))
+    span = sy.max() - sy.min()
+    rng = np.random.default_rng(0)
+    best = None
+    for _ in range(300):
+        i, j = rng.integers(0, len(seeds), 2)
+        if abs(sy[i] - sy[j]) < 0.25 * span:
+            continue
+        a = (sx[j] - sx[i]) / (sy[j] - sy[i])
+        b = sx[i] - a * sy[i]
+        inl = np.abs(sx - (a * sy + b)) <= tol
+        score = len(np.unique(sy[inl]))
+        if best is None or score > best[0]:
+            best = (score, inl)
+    if best is None:
+        return None
+    inl = best[1]
+    clean_rows = np.unique(sy[inl])
+    if len(clean_rows) < max(c.min_geometry_rows, 0.5 * h):
+        return None
+    a, b = np.polyfit(sy[inl], sx[inl], 1)
+    wa, wb = np.polyfit(sy[inl], sw[inl], 1)  # stripe width grows toward the camera
+    pruned = np.zeros_like(component)
+    trimmed = 0
+    for y, rs in runs.items():
+        px = a * y + b
+        hit = [(s, e) for s, e in rs if s - tol <= px <= e - 1 + tol]
+        if not hit:
+            continue
+        s, e = min(hit, key=lambda r: abs((r[0] + r[1] - 1) / 2.0 - px))
+        half = max(1.0, (wa * y + wb) / 2.0)
+        if e - s > 1.6 * 2 * half:
+            s, e = max(s, int(round(px - half))), min(e, int(round(px + half)) + 1)
+            trimmed += 1
+        if e > s:
+            pruned[y, s:e] = True
+    kept = int(pruned.any(axis=1).sum())
+    if kept < c.min_geometry_rows or trimmed > 0.35 * kept or len(clean_rows) < 0.6 * kept:
+        return None
+    return pruned
+
+
+def _component_gate(component: np.ndarray, roi_shape, c: LineConfig):
+    widths = component.sum(axis=1)
+    rows = np.flatnonzero(widths)
+    if len(rows) == 0:
+        return widths, rows, 0.0, False
+    splits = np.sum(np.diff(component.astype(np.int8), axis=1) == 1, axis=1)
+    splits += component[:, 0]
+    split_fraction = float(np.mean(splits[rows] > 1))
+    coverage = len(rows) / roi_shape[0]
+    median_width = float(np.median(widths[rows])) / roi_shape[1]
+    wide_fraction = float(np.mean(widths[rows] / roi_shape[1] > c.max_width_fraction))
+    ok = not (
+        median_width > c.max_width_fraction
+        or wide_fraction > c.max_wide_row_fraction
+        or split_fraction > c.max_split_row_fraction
+        or coverage < c.min_row_coverage
+        or len(rows) < c.min_geometry_rows
+    )
+    return widths, rows, coverage, ok
+
+
 def _line(gray, c: LineConfig) -> dict:
     cv2 = _cv2()
     top = int(gray.shape[0] * c.roi_top)
@@ -176,25 +265,19 @@ def _line(gray, c: LineConfig) -> dict:
         if not c.min_area_fraction <= area <= c.max_area_fraction:
             continue
         component = labels == label
-        widths = component.sum(axis=1)
-        rows = np.flatnonzero(widths)
-        splits = np.sum(np.diff(component.astype(np.int8), axis=1) == 1, axis=1)
-        splits += component[:, 0]
-        split_fraction = float(np.mean(splits[rows] > 1))
-        coverage = len(rows) / roi.shape[0]
-        median_width = float(np.median(widths[rows])) / roi.shape[1]
-        wide_fraction = float(np.mean(widths[rows] / roi.shape[1] > c.max_width_fraction))
-        contrast = abs(float(roi[component].mean()) - float(np.median(roi)))
-        confidence = coverage * min(1.0, contrast / c.contrast_full_scale)
-        if (
-            median_width > c.max_width_fraction
-            or wide_fraction > c.max_wide_row_fraction
-            or split_fraction > c.max_split_row_fraction
-            or coverage < c.min_row_coverage
-            or len(rows) < c.min_geometry_rows
-        ):
+        widths, rows, coverage, ok = _component_gate(component, roi.shape, c)
+        pruned_clutter = False
+        if not ok:
+            pruned = _spine_prune(component, c)
+            if pruned is not None:
+                widths, rows, coverage, ok = _component_gate(pruned, roi.shape, c)
+                if ok:
+                    component, pruned_clutter = pruned, True
+        if not ok:
             rejected_geometry = True
             continue
+        contrast = abs(float(roi[component].mean()) - float(np.median(roi)))
+        confidence = coverage * min(1.0, contrast / c.contrast_full_scale)
         geometry, reasons, fit_rows = _line_geometry(gray, component, rows, widths, top, c)
         geometric_confidence = confidence * max(0.0, 1 - geometry["fit_rms_fraction"] / c.max_fit_rms_fraction)
         sampled = fit_rows[np.linspace(0, len(fit_rows) - 1, c.samples).astype(int)]
@@ -210,11 +293,12 @@ def _line(gray, c: LineConfig) -> dict:
             "row_coverage": coverage,
             "contrast": contrast,
             "points_normalized": points,
+            "clutter_pruned": pruned_clutter,
         }
         (rejected if reasons else candidates).append(candidate)
     candidates.sort(key=lambda item: item["confidence"], reverse=True)
     empty = {"confidence": 0.0, "candidate_confidence": 0.0, "geometry": None, "geometry_reasons": [],
-             "row_coverage": 0.0, "contrast": 0.0, "points_normalized": []}
+             "row_coverage": 0.0, "contrast": 0.0, "points_normalized": [], "clutter_pruned": False}
     best = candidates[0] if candidates else (
         max(rejected, key=lambda item: item["candidate_confidence"]) if rejected else empty)
     ambiguous = len(candidates) > 1 and candidates[1]["confidence"] >= best["confidence"] * c.competitor_ratio
@@ -273,6 +357,7 @@ def detect_floor_line(gray: np.ndarray, config: LineConfig | None = None) -> dic
                       "dark_fraction": round(dark_fraction, 3), "line_recovered": bool(recovered)},
         "coordinate_unit": "normalized_image",
         "semantic_identity": "unverified",
+        "clutter_pruned": bool(line.get("clutter_pruned", False)) and bool(line["detected"]),
         "control_output": "DISABLED",
     }
     if line["detected"]:

@@ -168,3 +168,98 @@ def test_output_is_strict_json_and_never_a_command():
         json.dumps(doc, allow_nan=False)
         assert doc["control_output"] == "DISABLED"
         assert not ({"setpoint", "velocity", "command"} & set(doc))
+
+
+# --- cluttered floors -------------------------------------------------------------------------
+# The sim floors are white with scattered black dots (local sim) or multicoloured terrazzo chips
+# (lab sim); the venue tarp has dark printed spots. Clutter touching the tape used to fuse with it
+# into one "branched" component that the gates rejected. These pin the spine-pruning recovery and,
+# just as important, that clutter alone never becomes a line.
+
+DARK = L.LineConfig(polarity="dark")
+
+
+def cluttered_floor(kind, rng):
+    import cv2
+
+    img = np.full((H, W), 110.0, np.float32)
+    img[: int(H * 0.30)] = 150
+    floor = slice(int(H * 0.30), H)
+    if kind == "dots":
+        img[floor] = 215
+        for _ in range(140):
+            y, x = int(rng.integers(int(H * 0.32), H)), int(rng.integers(0, W))
+            r = int(3 + (y - H * 0.3) / H * 22)
+            cv2.ellipse(img, (x, y), (r, max(2, int(r * 0.55))), 0, 0, 360, 40, -1)
+    elif kind == "terrazzo":
+        img[floor] = 180
+        for _ in range(500):
+            y, x = int(rng.integers(int(H * 0.32), H)), int(rng.integers(0, W))
+            r = int(2 + (y - H * 0.3) / H * 12)
+            shade = float(rng.choice([60, 90, 140, 230]))
+            cv2.ellipse(
+                img, (x, y), (r, max(1, int(r * 0.6))), int(rng.integers(0, 180)), 0, 360, shade, -1
+            )
+    return img
+
+
+def tape(img, x_bottom, x_top, value=30, half_width=11, y_top=0.40):
+    y0 = int(H * y_top)
+    for y in range(y0, H):
+        t = (H - 1 - y) / (H - 1 - y0)
+        cx = (x_bottom + (x_top - x_bottom) * t) * W
+        hw = int(half_width * (0.5 + 0.5 * (1 - t)))  # wider near the camera
+        img[y, max(0, int(cx - hw)) : int(cx + hw)] = value
+    return img
+
+
+def cluttered_case(kind, seed, with_line=True):
+    rng = np.random.default_rng(seed)
+    img = cluttered_floor(kind, rng)
+    xb, xt = 0.5 + 0.1 * rng.standard_normal(), 0.5 + 0.1 * rng.standard_normal()
+    if with_line:
+        img = tape(img, xb, xt)
+    img += rng.normal(0, 3, img.shape)
+    return np.clip(np.rint(img), 0, 255).astype(np.uint8), 2 * xb - 1
+
+
+@pytest.mark.parametrize("kind,min_rate", [("dots", 0.75), ("terrazzo", 0.9)])
+def test_tape_on_cluttered_floor_is_found_where_it_is(kind, min_rate):
+    hits, errors = 0, []
+    for seed in range(20):
+        gray, true_offset = cluttered_case(kind, seed)
+        doc = L.detect_floor_line(gray, DARK)
+        if doc["detected"]:
+            hits += 1
+            errors.append(abs(doc["bottom_offset"] - true_offset))
+    assert hits / 20 >= min_rate
+    assert max(errors) < 0.02  # pruning must not drag the line sideways
+
+
+@pytest.mark.parametrize("kind", ["dots", "terrazzo"])
+def test_clutter_alone_never_becomes_a_line(kind):
+    false = sum(
+        L.detect_floor_line(cluttered_case(kind, s, False)[0], DARK)["detected"] for s in range(30)
+    )
+    assert false == 0
+
+
+def test_clean_tape_does_not_use_pruning():
+    img = np.full((H, W), 110.0, np.float32)
+    img[int(H * 0.30) :] = 200
+    doc = L.detect_floor_line(np.clip(tape(img, 0.5, 0.55), 0, 255).astype(np.uint8), DARK)
+    assert doc["detected"] and doc["clutter_pruned"] is False
+
+
+def test_fused_blob_without_a_stripe_is_not_pruned_into_a_line():
+    # one large dark irregular blob in the floor region: lots of rows, no straight narrow spine
+    import cv2
+
+    img = np.full((H, W), 110.0, np.float32)
+    img[int(H * 0.30) :] = 200
+    rng = np.random.default_rng(5)
+    for _ in range(60):
+        y, x = int(rng.integers(int(H * 0.40), H)), int(rng.integers(220, 420))
+        cv2.circle(img, (x, y), int(rng.integers(8, 20)), 30, -1)
+    doc = L.detect_floor_line(np.clip(img, 0, 255).astype(np.uint8), DARK)
+    assert not doc["detected"]

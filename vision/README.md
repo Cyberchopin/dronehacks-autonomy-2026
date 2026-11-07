@@ -129,6 +129,31 @@ Change from the prototype: the wall-edge check now compares the stripe with its 
 The prototype compared with the floor median, which rejected every real line when walls were
 brighter than the floor (regression test `test_bright_walls_alone_do_not_hide_a_floor_line`).
 
+### Cluttered floors
+
+The sim floors are white with scattered black dots (local sim) or multicoloured terrazzo chips (lab
+sim), and the venue tarp has dark printed spots. When clutter touches the tape, the two fuse into
+one "branched" blob that the shape gates reject. Before rejecting, the detector now tries a
+deterministic RANSAC fit through the blob's **narrow** runs, rebuilds the stripe from the run on
+that spine in each row, and trims runs widened by clutter to the local stripe width. The rebuilt
+stripe must still pass every normal gate. It is refused unless clean narrow runs on the spine
+support at least half of the search rows and 60% of the kept rows, and at most 35% of rows needed
+trimming. Output field `clutter_pruned` is `true` when a detection came from this path.
+
+Synthetic 640×400 frames, 100 per case, `polarity="dark"`:
+
+| floor | tape present: found before → after | no tape: false detections |
+| --- | --- | --- |
+| plain | 100% → 100% | 0% |
+| black dots | 30% → 85% | 0% |
+| terrazzo chips | 13% → 100% | 0% |
+
+The bottom-offset error stays at a median of 0.003 (max 0.010) with clutter, the same as on a
+plain floor. Plain-floor detections never use this path. Misses on dotted floors are refusals
+(fail-safe), not wrong lines. Synthetic only: real sim frames are still needed (see `replay/`).
+Tests: `test_tape_on_cluttered_floor_is_found_where_it_is`, `test_clutter_alone_never_becomes_a_line`,
+`test_clean_tape_does_not_use_pruning`, `test_fused_blob_without_a_stripe_is_not_pruned_into_a_line`.
+
 ## Credits
 
 `vision/depth_sectors.py` was originally copied from the author's pre-event repository
