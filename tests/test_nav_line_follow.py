@@ -30,8 +30,7 @@ def line(
         "ambiguous": ambiguous,
         "bottom_offset": None if not detected else offset,
         "image_lean_deg": None if not detected else lean,
-        "rejection_reasons": reasons
-        or ([] if detected else ["insufficient_line_support"]),
+        "rejection_reasons": reasons or ([] if detected else ["insufficient_line_support"]),
     }
 
 
