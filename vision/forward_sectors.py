@@ -10,9 +10,10 @@ Output is a JSON-ready dict: per azimuth sector the nearest range along the ray 
 sector was actually observed, and why not. "No return" is UNKNOWN, never free space. Nothing here
 produces a velocity, setpoint or command: control_output is always "DISABLED".
 
-The sector maths is vision/depth_sectors.py, copied unchanged from Cyberchopin/dronehacks-autonomy-2026
+The sector maths is vision/depth_sectors.py, adapted from Cyberchopin/dronehacks-autonomy-2026
 (see vision/README.md for provenance).
 """
+
 from __future__ import annotations
 
 import math
@@ -38,12 +39,16 @@ def decode_depth(
     elif enc in ("16uc1", "mono16"):
         base, scale = "u2", 1e-3
     else:
-        raise ValueError(f"unsupported depth encoding {encoding!r} (need 32FC1 metres or 16UC1 millimetres)")
+        raise ValueError(
+            f"unsupported depth encoding {encoding!r} (need 32FC1 metres or 16UC1 millimetres)"
+        )
     dt = np.dtype((">" if is_bigendian else "<") + base)
     if not (0 < height <= 4096 and 0 < width <= 4096):
         raise ValueError(f"invalid image size {width}x{height}")
     if step < width * dt.itemsize or len(data) != step * height:
-        raise ValueError(f"buffer is {len(data)} bytes, expected step*height = {step}*{height} with step >= width*{dt.itemsize}")
+        raise ValueError(
+            f"buffer is {len(data)} bytes, expected step*height = {step}*{height} with step >= width*{dt.itemsize}"
+        )
     image = np.ndarray((height, width), dtype=dt, buffer=bytes(data), strides=(step, dt.itemsize))
     z = image.astype(np.float32) * np.float32(scale)
     valid = np.isfinite(z) & (z > 0.0)
@@ -74,7 +79,7 @@ def optical_axis_offset_deg(w: float, x: float, y: float, z: float) -> float:
 
 
 def report_to_dict(report: ObstacleReport, frame_id: str = "") -> dict:
-    """ObstacleReport -> plain dict for std_msgs/String JSON. Azimuth: + = right of the optical axis."""
+    """ObstacleReport -> plain dict for std_msgs/String JSON. Azimuth: + = right."""
     return {
         "schema": SCHEMA,
         "frame_id": frame_id,
@@ -85,7 +90,10 @@ def report_to_dict(report: ObstacleReport, frame_id: str = "") -> dict:
         "nearest_m": None if report.nearest_m is None else round(float(report.nearest_m), 3),
         "sectors": [
             {
-                "azimuth_deg": [round(float(s.azimuth_deg[0]), 1), round(float(s.azimuth_deg[1]), 1)],
+                "azimuth_deg": [
+                    round(float(s.azimuth_deg[0]), 1),
+                    round(float(s.azimuth_deg[1]), 1),
+                ],
                 "nearest_m": None if s.nearest_m is None else round(float(s.nearest_m), 3),
                 "valid_fraction": round(float(s.valid_fraction), 3),
                 "observed": bool(s.valid),
@@ -109,8 +117,30 @@ def forward_sectors(
     frame_id: str = "",
     config: SectorConfig | None = None,
     is_bigendian: bool = False,
+    *,
+    R_level_cam: np.ndarray | None = None,
+    camera_height_m: float | None = None,
+    floor_margin_m: float = 0.15,
 ) -> dict:
-    """One depth message + its CameraInfo.k -> forward-sector dict. Raises ValueError on bad input."""
+    """One depth message + K -> sectors; optional optical-to-level FLU rotation.
+
+    Without R_level_cam the optical-frame calculation is unchanged (height is
+    unused). With it, bin around the level horizon; a valid camera height also
+    excludes points at/below floor_margin_m above the floor. Invalid inputs raise
+    ValueError. Ranges remain Euclidean ray distances, with +right azimuth.
+    """
     z, valid = decode_depth(encoding, height, width, step, data, is_bigendian)
-    report = sector_report(z, valid, int(stamp_ns), intrinsics_from_k(k), now_ns=int(now_ns), config=config)
-    return report_to_dict(report, frame_id)
+    report = sector_report(
+        z,
+        valid,
+        int(stamp_ns),
+        intrinsics_from_k(k),
+        now_ns=int(now_ns),
+        config=config,
+        R_level_cam=R_level_cam,
+        camera_height_m=camera_height_m,
+        floor_margin_m=floor_margin_m,
+    )
+    doc = report_to_dict(report, frame_id)
+    doc["leveled"] = R_level_cam is not None
+    return doc

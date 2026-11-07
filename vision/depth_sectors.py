@@ -24,6 +24,8 @@ from dataclasses import dataclass
 
 import numpy as np
 
+from .attitude import rotation_matrix
+
 
 @dataclass(frozen=True)
 class Intrinsics:
@@ -37,7 +39,7 @@ class Intrinsics:
 class SectorConfig:
     sectors: int = 7
     horizontal_fov_deg: float | None = None  # None = full image width
-    vertical_band_deg: float = 15.0  # +- around the optical axis
+    vertical_band_deg: float = 15.0  # +- optical axis, or horizon when R_level_cam is supplied
     min_range_m: float = 0.2  # below: unreliable (stereo blind zone), not "an obstacle"
     max_range_m: float = 10.0
     percentile: float = 5.0  # robust "nearest": ignores isolated speckle
@@ -93,8 +95,30 @@ def sector_report(
     *,
     now_ns: int,
     config: SectorConfig | None = None,
+    R_level_cam: np.ndarray | None = None,
+    camera_height_m: float | None = None,
+    floor_margin_m: float = 0.15,
 ) -> ObstacleReport:
+    """Summarise ray ranges; optional leveling retains the historical +right azimuth.
+
+    R_level_cam maps optical (right, down, forward) to level (forward, left, up).
+    Height is the camera optical centre above a locally horizontal floor. Floor
+    returns become missing evidence, never an observed-clear sector.
+    """
     config = config or SectorConfig()
+    if camera_height_m is not None:
+        try:
+            camera_height_m = float(camera_height_m)
+        except (TypeError, ValueError) as e:
+            raise ValueError("camera_height_m must be finite and > 0") from e
+    try:
+        floor_margin_m = float(floor_margin_m)
+    except (TypeError, ValueError) as e:
+        raise ValueError("floor_margin_m must be finite and >= 0") from e
+    if camera_height_m is not None and (not np.isfinite(camera_height_m) or camera_height_m <= 0):
+        raise ValueError("camera_height_m must be finite and > 0")
+    if not np.isfinite(floor_margin_m) or floor_margin_m < 0:
+        raise ValueError("floor_margin_m must be finite and >= 0")
     if depth_m.ndim != 2 or valid.shape != depth_m.shape:
         raise ValueError("depth and valid mask must be 2-D with the same shape")
     if valid.dtype != bool:
@@ -103,12 +127,28 @@ def sector_report(
     with np.errstate(invalid="ignore"):
         ranges = depth_m * ray_scale
     usable = valid & np.isfinite(ranges) & (depth_m > 0)
-    band = np.abs(elevation) <= config.vertical_band_deg
+    # Keep the calibrated horizontal extent fixed as attitude changes. Areas
+    # outside the image remain unobserved, rather than stretching sector edges.
     half = (
         config.horizontal_fov_deg / 2
         if config.horizontal_fov_deg is not None
         else float(min(abs(azimuth[0, 0]), abs(azimuth[0, -1])))
     )
+    if R_level_cam is not None:
+        rotation = rotation_matrix(R_level_cam)
+        h, w = depth_m.shape
+        u, v = np.meshgrid(
+            (np.arange(w) - intrinsics.cx) / intrinsics.fx,
+            (np.arange(h) - intrinsics.cy) / intrinsics.fy,
+        )
+        rays = np.stack((u, v, np.ones_like(u)), axis=-1) @ rotation.T
+        azimuth = np.degrees(np.arctan2(-rays[..., 1], rays[..., 0]))
+        elevation = np.degrees(np.arctan2(rays[..., 2], np.hypot(rays[..., 0], rays[..., 1])))
+        if camera_height_m is not None:
+            with np.errstate(invalid="ignore"):
+                point_height = camera_height_m + depth_m * rays[..., 2]
+            usable &= point_height > floor_margin_m
+    band = np.abs(elevation) <= config.vertical_band_deg
     edges = np.linspace(-half, half, config.sectors + 1)
     results = []
     for left, right in itertools.pairwise(edges):
