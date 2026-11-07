@@ -49,9 +49,7 @@ def mono8(img, pad=0):
 
 def run(msg, config=None, stamp=FRESH):
     enc, h, w, step, data, big = msg
-    return L.floor_line_message(
-        enc, h, w, step, data, stamp, NOW, "left_optical", config, big
-    )
+    return L.floor_line_message(enc, h, w, step, data, stamp, NOW, "left_optical", config, big)
 
 
 def test_centred_straight_line():

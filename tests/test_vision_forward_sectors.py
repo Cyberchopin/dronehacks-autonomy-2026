@@ -73,9 +73,7 @@ def test_big_endian_bytes_decode_the_same():
     assert little["sectors"] == big["sectors"]
 
 
-@pytest.mark.parametrize(
-    "make", [lambda: msg_16uc1(wall(0.0)), lambda: msg_32fc1(wall(np.nan))]
-)
+@pytest.mark.parametrize("make", [lambda: msg_16uc1(wall(0.0)), lambda: msg_32fc1(wall(np.nan))])
 def test_no_return_is_unknown_not_clear(make):
     doc = run(make())
     assert observed(doc) == []
@@ -105,9 +103,7 @@ def test_inside_blind_zone_is_not_observed():
 
 
 def test_stale_frame_is_flagged():
-    doc = run(
-        msg_16uc1(wall(2.0)), stamp=NOW - 500_000_000
-    )  # 500 ms old > 200 ms limit
+    doc = run(msg_16uc1(wall(2.0)), stamp=NOW - 500_000_000)  # 500 ms old > 200 ms limit
     assert doc["fresh"] is False and doc["age_ms"] == pytest.approx(500.0)
 
 
@@ -132,9 +128,7 @@ def test_malformed_images_raise(bad):
         run(bad)
 
 
-@pytest.mark.parametrize(
-    "k", [[0.0] * 9, [math.nan, 0, 80, 0, 106, 50, 0, 0, 1], [106, 0, 80]]
-)
+@pytest.mark.parametrize("k", [[0.0] * 9, [math.nan, 0, 80, 0, 106, 50, 0, 0, 1], [106, 0, 80]])
 def test_uncalibrated_or_invalid_k_raises(k):
     with pytest.raises(ValueError):
         run(msg_16uc1(wall(2.0)), k=k)
@@ -150,31 +144,15 @@ def test_output_is_strict_json_and_never_a_command():
 
 def _mat_to_quat(R):
     w = math.sqrt(max(0.0, 1 + R[0, 0] + R[1, 1] + R[2, 2])) / 2
-    x = math.copysign(
-        math.sqrt(max(0.0, 1 + R[0, 0] - R[1, 1] - R[2, 2])) / 2, R[2, 1] - R[1, 2]
-    )
-    y = math.copysign(
-        math.sqrt(max(0.0, 1 - R[0, 0] + R[1, 1] - R[2, 2])) / 2, R[0, 2] - R[2, 0]
-    )
-    z = math.copysign(
-        math.sqrt(max(0.0, 1 - R[0, 0] - R[1, 1] + R[2, 2])) / 2, R[1, 0] - R[0, 1]
-    )
+    x = math.copysign(math.sqrt(max(0.0, 1 + R[0, 0] - R[1, 1] - R[2, 2])) / 2, R[2, 1] - R[1, 2])
+    y = math.copysign(math.sqrt(max(0.0, 1 - R[0, 0] + R[1, 1] - R[2, 2])) / 2, R[0, 2] - R[2, 0])
+    z = math.copysign(math.sqrt(max(0.0, 1 - R[0, 0] - R[1, 1] + R[2, 2])) / 2, R[1, 0] - R[0, 1])
     return w, x, y, z
 
 
 def test_forward_camera_check_matches_refnav_convention():
-    forward = np.array(
-        [[0.0, 0.0, 1.0], [-1.0, 0.0, 0.0], [0.0, -1.0, 0.0]]
-    )  # FLU <- optical
-    down = np.array(
-        [[0.0, -1.0, 0.0], [-1.0, 0.0, 0.0], [0.0, 0.0, -1.0]]
-    )  # optical z = body down
-    assert F.optical_axis_offset_deg(*_mat_to_quat(forward)) == pytest.approx(
-        0.0, abs=1e-6
-    )
-    assert F.optical_axis_offset_deg(*_mat_to_quat(down)) == pytest.approx(
-        90.0, abs=1e-6
-    )
-    assert (
-        F.optical_axis_offset_deg(0.0, 0.0, 0.0, 0.0) == 180.0
-    )  # invalid TF fails closed
+    forward = np.array([[0.0, 0.0, 1.0], [-1.0, 0.0, 0.0], [0.0, -1.0, 0.0]])  # FLU <- optical
+    down = np.array([[0.0, -1.0, 0.0], [-1.0, 0.0, 0.0], [0.0, 0.0, -1.0]])  # optical z = body down
+    assert F.optical_axis_offset_deg(*_mat_to_quat(forward)) == pytest.approx(0.0, abs=1e-6)
+    assert F.optical_axis_offset_deg(*_mat_to_quat(down)) == pytest.approx(90.0, abs=1e-6)
+    assert F.optical_axis_offset_deg(0.0, 0.0, 0.0, 0.0) == 180.0  # invalid TF fails closed
