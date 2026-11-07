@@ -31,8 +31,10 @@ class FloorLine(Node):
         super().__init__("vision_floor_line")
         self.image_topic = self.declare_parameter("image_topic", "/stereo/left/image").value
         out_topic = self.declare_parameter("out_topic", "/vision/floor_line").value
+        # DroneHacks course (confirmed from site photos 2026-11-06): the maze route is BLACK tape on
+        # an orange floor, so the line is DARKER than the floor -> "dark". Override per camera if needed.
         self.config = LineConfig(
-            polarity=str(self.declare_parameter("polarity", "bright").value),
+            polarity=str(self.declare_parameter("polarity", "dark").value),
             roi_top=float(self.declare_parameter("roi_top", 0.35).value),
         )
         self.max_age_ms = float(self.declare_parameter("max_age_ms", 200.0).value)

@@ -2,6 +2,7 @@
 sensor_msgs/Image byte layout. Pins: a clean floor stripe is found with the right image-space
 offset and lean; blank, competing, wrong-polarity and black frames are NOT reported as a line;
 bad input raises; the output never carries a command."""
+
 import json
 import sys
 from dataclasses import replace
@@ -32,7 +33,7 @@ def stripe(img, x_bottom, x_top, value, y_top=0.40, half_width=9):
     for y in range(int(H * y_top), H):
         t = (H - 1 - y) / (H - 1 - int(H * y_top))
         cx = (x_bottom + (x_top - x_bottom) * t) * W
-        img[y, max(0, int(cx - half_width)): int(cx + half_width)] = value
+        img[y, max(0, int(cx - half_width)) : int(cx + half_width)] = value
     return img
 
 
@@ -48,7 +49,9 @@ def mono8(img, pad=0):
 
 def run(msg, config=None, stamp=FRESH):
     enc, h, w, step, data, big = msg
-    return L.floor_line_message(enc, h, w, step, data, stamp, NOW, "left_optical", config, big)
+    return L.floor_line_message(
+        enc, h, w, step, data, stamp, NOW, "left_optical", config, big
+    )
 
 
 def test_centred_straight_line():
@@ -123,15 +126,27 @@ def test_row_padding_mono16_bigendian_and_colour_decode_alike():
     bgr = np.repeat(u8(img)[:, :, None], 3, axis=2)
     colour = run(("bgr8", H, W, W * 3, bgr.tobytes(), False))
     for other in (padded, big16, colour):
-        assert other["detected"] and other["bottom_offset"] == pytest.approx(ref["bottom_offset"], abs=1e-3)
+        assert other["detected"] and other["bottom_offset"] == pytest.approx(
+            ref["bottom_offset"], abs=1e-3
+        )
 
 
-@pytest.mark.parametrize("bad", [
-    ("16UC1", H, W, W * 2, bytes(H * W * 2), False),        # depth is not an intensity image
-    ("mono8", H, W, W, bytes(H * W - 1), False),            # short buffer
-    ("mono8", H, W, W - 1, bytes(H * (W - 1)), False),      # row shorter than width
-    ("mono8", 8, 8, 8, bytes(64), False),                   # too small to search
-])
+@pytest.mark.parametrize(
+    "bad",
+    [
+        (
+            "16UC1",
+            H,
+            W,
+            W * 2,
+            bytes(H * W * 2),
+            False,
+        ),  # depth is not an intensity image
+        ("mono8", H, W, W, bytes(H * W - 1), False),  # short buffer
+        ("mono8", H, W, W - 1, bytes(H * (W - 1)), False),  # row shorter than width
+        ("mono8", 8, 8, 8, bytes(64), False),  # too small to search
+    ],
+)
 def test_malformed_images_raise(bad):
     with pytest.raises(ValueError):
         run(bad)

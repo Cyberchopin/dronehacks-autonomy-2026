@@ -1,6 +1,7 @@
 """Closed-loop sanity for the perception->steering chain (nav.line_follow_sim). Kinematic, offline,
 with the REAL detector and controller in the loop. Not the DroneHacks sim; proves sign convention,
 convergence and the lost-line fail-safe, not flight behaviour."""
+
 import sys
 from pathlib import Path
 
@@ -14,14 +15,14 @@ from nav.line_follow_sim import SimConfig, run  # noqa: E402
 @pytest.mark.parametrize("y0", [0.3, -0.3, 0.5, -0.5])
 def test_converges_from_lateral_offset(y0):
     r = run(y0, 0.0)
-    assert r["converged"]                       # final offset at least halved
-    assert r["y_final_abs"] < 0.1               # ends near the line (< 10 cm)
-    assert r["y_tail_max_abs"] <= abs(y0)       # never diverges past the start
+    assert r["converged"]  # final offset at least halved
+    assert r["y_final_abs"] < 0.1  # ends near the line (< 10 cm)
+    assert r["y_tail_max_abs"] <= abs(y0)  # never diverges past the start
 
 
 def test_converges_from_heading_error():
-    r = run(0.0, 0.35)                           # ~20 deg nose off, on the line
-    assert r["y_tail_max_abs"] < 0.25            # heading error doesn't throw it far off
+    r = run(0.0, 0.35)  # ~20 deg nose off, on the line
+    assert r["y_tail_max_abs"] < 0.25  # heading error doesn't throw it far off
     assert r["y_final_abs"] < 0.1
 
 

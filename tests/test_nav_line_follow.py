@@ -1,8 +1,8 @@
 """nav.line_follow: steering advisory from floor-line dicts. Pure, no ROS, stdlib only.
 Pins the sign convention, the bounds and deadbands, and the fail-safe (never steer on an untrusted
 line; coast briefly then recommend stop; never emit a command)."""
+
 import sys
-from dataclasses import replace
 from pathlib import Path
 
 import pytest
@@ -11,14 +11,27 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from nav import line_follow as LF  # noqa: E402
 
 
-def line(offset=0.0, lean=0.0, detected=True, confidence=0.9, status="supported",
-         fresh=True, ambiguous=False, reasons=None):
+def line(
+    offset=0.0,
+    lean=0.0,
+    detected=True,
+    confidence=0.9,
+    status="supported",
+    fresh=True,
+    ambiguous=False,
+    reasons=None,
+):
     return {
-        "schema": "vision.floor_line/1", "detected": detected, "status": status,
-        "confidence": confidence, "fresh": fresh, "ambiguous": ambiguous,
+        "schema": "vision.floor_line/1",
+        "detected": detected,
+        "status": status,
+        "confidence": confidence,
+        "fresh": fresh,
+        "ambiguous": ambiguous,
         "bottom_offset": None if not detected else offset,
         "image_lean_deg": None if not detected else lean,
-        "rejection_reasons": reasons or ([] if detected else ["insufficient_line_support"]),
+        "rejection_reasons": reasons
+        or ([] if detected else ["insufficient_line_support"]),
     }
 
 
@@ -60,13 +73,16 @@ def test_small_offset_within_deadband_gives_no_nudge():
     assert out["steer"] and out["on_line"]
 
 
-@pytest.mark.parametrize("bad", [
-    dict(detected=False),
-    dict(detected=False, reasons=["competing_lines"]),
-    dict(confidence=0.3),
-    dict(status="ambiguous", ambiguous=True),
-    dict(fresh=False),
-])
+@pytest.mark.parametrize(
+    "bad",
+    [
+        dict(detected=False),
+        dict(detected=False, reasons=["competing_lines"]),
+        dict(confidence=0.3),
+        dict(status="ambiguous", ambiguous=True),
+        dict(fresh=False),
+    ],
+)
 def test_untrusted_line_never_steers(bad):
     out = follower().update(line(**bad), 0.0)
     assert not out["steer"] and out["lateral_mps"] == 0.0 and out["yaw_rate_dps"] == 0.0
@@ -118,8 +134,14 @@ def test_output_never_carries_a_command_and_executed_is_false():
         assert not ({"setpoint", "velocity", "command", "arm"} & set(out))
 
 
-@pytest.mark.parametrize("cfg", [dict(min_confidence=1.5), dict(max_lateral_mps=-1.0),
-                                 dict(coast_s=2.0, lost_s=1.0)])
+@pytest.mark.parametrize(
+    "cfg",
+    [
+        dict(min_confidence=1.5),
+        dict(max_lateral_mps=-1.0),
+        dict(coast_s=2.0, lost_s=1.0),
+    ],
+)
 def test_invalid_config_raises(cfg):
     with pytest.raises(ValueError):
         LF.FollowConfig(**cfg)
@@ -140,10 +162,12 @@ def test_end_to_end_real_floor_line_dict_drives_steering():
     img += rng.normal(0, 3, img.shape)
     for y in range(int(H * 0.40), H):  # a straight stripe to the right of centre
         cx = int(0.68 * W)
-        img[y, cx - 9: cx + 9] = 200.0
+        img[y, cx - 9 : cx + 9] = 200.0
     data = np.clip(np.rint(img), 0, 255).astype(np.uint8).tobytes()
 
-    doc = FL.floor_line_message("mono8", H, W, W, data, 1_000_000_000, 1_000_040_000, "left_optical")
+    doc = FL.floor_line_message(
+        "mono8", H, W, W, data, 1_000_000_000, 1_000_040_000, "left_optical"
+    )
     assert doc["detected"]
     out = LF.LineFollower().update(doc, 1.0)
     assert out["steer"] and out["lateral_mps"] > 0  # line on the right -> nudge right
